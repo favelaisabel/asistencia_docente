@@ -12,7 +12,19 @@ import '../aplicacion/providers.dart';
 
 /// Pestaña Horario (W-05; RF-006, RF-010, RF-011; flujo F6).
 class HorarioPantalla extends ConsumerStatefulWidget {
-  const HorarioPantalla({super.key});
+  const HorarioPantalla({
+    super.key,
+    this.resultadoInicial,
+    this.archivoInicial,
+  });
+
+  /// Solo para pruebas y capturas del manual: muestra un resultado de
+  /// validación sin abrir el selector de archivos.
+  @visibleForTesting
+  final ResultadoImportacion? resultadoInicial;
+
+  @visibleForTesting
+  final String? archivoInicial;
 
   @override
   ConsumerState<HorarioPantalla> createState() => _HorarioPantallaState();
@@ -23,8 +35,8 @@ class _HorarioPantallaState extends ConsumerState<HorarioPantalla> {
   final _periodo = TextEditingController(text: '2026-2');
   final _inicio = TextEditingController(text: '2026-08-10');
   final _fin = TextEditingController(text: '2026-12-11');
-  String? _archivo;
-  ResultadoImportacion? _resultado;
+  late String? _archivo = widget.archivoInicial;
+  late ResultadoImportacion? _resultado = widget.resultadoInicial;
   String? _error;
   double? _progreso;
   bool _activado = false;

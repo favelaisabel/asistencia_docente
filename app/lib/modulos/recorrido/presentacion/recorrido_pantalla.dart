@@ -283,7 +283,7 @@ class _TarjetaAula extends StatelessWidget {
     if (r == null || s == null) return 'Pendiente';
     if (s == Situacion.suplencia) return 'Suplente: ${r.suplenteNombre}';
     if (s == Situacion.pendiente) {
-      return 'Aún no llega · desde min ${r.minutoCaptura}';
+      return 'Aún no llega · min ${r.minutoCaptura}';
     }
     if (r.estado == EstadoCaptura.aunNoLlega) {
       return r.minutoLlegada == null
@@ -330,11 +330,15 @@ class _TarjetaAula extends StatelessWidget {
                         color: Color(0xFF8A4B00),
                       ),
                     ),
-                  const Spacer(),
-                  Flexible(
-                    child: EtiquetaSituacion(
-                      texto: _etiqueta(),
-                      estilo: EstiloSituacion.de(aula.situacion),
+                  const SizedBox(width: 12),
+                  // La etiqueta ocupa todo el espacio libre, alineada a la derecha.
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: EtiquetaSituacion(
+                        texto: _etiqueta(),
+                        estilo: EstiloSituacion.de(aula.situacion),
+                      ),
                     ),
                   ),
                 ],

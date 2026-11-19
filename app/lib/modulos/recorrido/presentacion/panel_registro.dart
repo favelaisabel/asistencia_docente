@@ -55,6 +55,7 @@ class _PanelRegistroState extends ConsumerState<PanelRegistro> {
   final _observacion = TextEditingController();
   final _suplente = TextEditingController();
   String? _error;
+  bool _faltaSuplente = false;
 
   static const _opciones = [
     (EstadoCaptura.presente, Situacion.aTiempo),
@@ -228,7 +229,7 @@ class _PanelRegistroState extends ConsumerState<PanelRegistro> {
       maxLength: 120,
       decoration: InputDecoration(
         labelText: 'Nombre del suplente',
-        errorText: _error == null
+        errorText: !_faltaSuplente
             ? null
             : 'Escribe el nombre del suplente para guardar.',
       ),
@@ -240,7 +241,7 @@ class _PanelRegistroState extends ConsumerState<PanelRegistro> {
           child: OutlinedButton(
             onPressed: () => setState(() {
               _modo = _Modo.opciones;
-              _error = null;
+              _faltaSuplente = false;
             }),
             child: const Text('Volver'),
           ),
@@ -254,7 +255,7 @@ class _PanelRegistroState extends ConsumerState<PanelRegistro> {
               onPressed: () {
                 final nombre = _suplente.text.trim();
                 if (nombre.length < 3) {
-                  setState(() => _error = 'suplente');
+                  setState(() => _faltaSuplente = true);
                   return;
                 }
                 _guardar(EstadoCaptura.suplente, suplente: nombre);

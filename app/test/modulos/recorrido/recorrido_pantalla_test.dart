@@ -102,6 +102,8 @@ void main() {
         findsOneWidget,
       );
       expect(registros.todos, isEmpty);
+      // Regresión: el mensaje aparece una sola vez, sin texto técnico suelto.
+      expect(find.text('suplente'), findsNothing);
 
       await tester.enterText(
         find.widgetWithText(TextField, 'Nombre del suplente'),
@@ -120,7 +122,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Aún no llega'));
       await tester.pumpAndSettle();
-      expect(find.textContaining('Aún no llega · desde min 5'), findsOneWidget);
+      expect(find.textContaining('Aún no llega · min 5'), findsOneWidget);
 
       reloj.instante = juevesNueveYCinco.add(const Duration(minutes: 15));
       await tester.tap(find.text('A103'));

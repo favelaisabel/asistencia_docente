@@ -81,7 +81,16 @@ class RegistrosFalsos implements RegistroRepositorio {
   }
 
   @override
-  Stream<bool> sinConexion(String fecha) => Stream.value(false);
+  Stream<bool> sinConexion(String fecha) => Stream.value(simularSinConexion);
+
+  /// Para capturas: simula trabajo sin conexión con registros por enviar.
+  bool simularSinConexion = false;
+
+  /// Agrega un registro ya existente (para preparar escenarios).
+  void sembrar(Registro r) {
+    _registros[r.id] = r;
+    _cambios.add(null);
+  }
 
   @override
   Future<List<Registro>> registrosEntre(String desde, String hasta) async =>

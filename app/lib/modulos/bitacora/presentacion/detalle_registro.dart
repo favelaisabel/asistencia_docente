@@ -15,6 +15,34 @@ String horaLocal(DateTime? instante) {
   return '${m.fecha} ${m.hora.toString().padLeft(2, '0')}:${m.minuto.toString().padLeft(2, '0')}';
 }
 
+/// Cambio de la bitácora en lenguaje claro ("Situación: Sin docente").
+String describirCambio(Map<String, Object?> cambio) {
+  final partes = <String>[];
+  for (final MapEntry(:key, :value) in cambio.entries) {
+    final texto = '${value ?? ''}';
+    switch (key) {
+      case 'estadoCaptura':
+        partes.add(
+          'Situación: ${EstadoCaptura.desdeCodigo(texto)?.etiqueta ?? texto}',
+        );
+      case 'suplenteNombre':
+        partes.add('Suplente: $texto');
+      case 'observacion':
+        partes.add('Observación: $texto');
+      case 'llegadaDispositivo':
+        final llegada = DateTime.tryParse(texto);
+        partes.add(
+          llegada == null
+              ? 'Llegada: sin registrar'
+              : 'Llegada: ${horaLocal(llegada)}',
+        );
+      default:
+        partes.add('$key: $texto');
+    }
+  }
+  return partes.join(' · ');
+}
+
 /// Detalle de un registro con su bitácora y corrección con motivo
 /// (W-03; RF-031, RF-032).
 Future<void> mostrarDetalleRegistro(BuildContext context, FilaReporte fila) {
@@ -171,8 +199,9 @@ class _DetalleRegistroState extends ConsumerState<_DetalleRegistro> {
                             'v${e.version} · ${e.accion} · ${horaLocal(e.horaServidor)}',
                             style: const TextStyle(fontWeight: FontWeight.w600),
                           ),
-                          if (e.antes.isNotEmpty) Text('Antes: ${e.antes}'),
-                          Text('Después: ${e.despues}'),
+                          if (e.antes.isNotEmpty)
+                            Text('Antes: ${describirCambio(e.antes)}'),
+                          Text('Después: ${describirCambio(e.despues)}'),
                           if (e.motivo.isNotEmpty) Text('Motivo: ${e.motivo}'),
                           Text(
                             '${e.usuarioNombre} · ${e.usuarioRol}',
