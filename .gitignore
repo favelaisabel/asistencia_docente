@@ -1,0 +1,24 @@
+# Dependencias de Node (pruebas de reglas)
+node_modules/
+
+# Variables de entorno locales y credenciales (C-16: nunca en el repositorio)
+.env
+*.env.local
+credenciales/
+*-service-account*.json
+*serviceAccount*.json
+
+# Registros del emulador y de Firebase CLI
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+ui-debug.log
+database-debug.log
+.firebase/
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json

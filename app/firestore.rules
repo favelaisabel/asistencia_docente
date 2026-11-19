@@ -1,0 +1,12 @@
+rules_version = '2';
+
+// Reglas de seguridad de Firestore (ADR-005, 08_SEGURIDAD_CONTINUIDAD §5).
+// I0: todo denegado por defecto (C-05). Cada incremento abre solo lo que
+// necesita, con pruebas en test_reglas/.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

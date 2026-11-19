@@ -1,0 +1,5 @@
+# Saltos de línea LF en el repositorio (evita diferencias entre Windows y el CI en Linux)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jar binary

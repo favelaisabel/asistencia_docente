@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Recorrido del encargado</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4FBF}a:hover{color:#163A8C}
+button{font-family:inherit}
+input{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; display: flex; flex-direction: column; background: #F5F6F8; color: #1B1F24; font-family: Inter, system-ui, sans-serif">
+
+  <header style="background: #FFFFFF; padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid #E3E6EA">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 13px; color: #4A525C">Miércoles 18 nov 2026 · Turno matutino</span>
+        <h1 style="margin: 0; font-size: 24px; font-weight: 700">Bloque 09:00–09:59</h1>
+      </div>
+      <span style="font-size: 13px; color: #4A525C; padding-top: 2px">Hora {{hora}}</span>
+    </div>
+    <div role="status" style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; font-size: 14px; font-weight: 600; background: {{syncBg}}; color: {{syncFg}}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.6 1.5A3.5 3.5 0 0 0 7 18z"></path></svg>
+      <span>{{syncText}}</span>
+    </div>
+    <sc-if value="{{hasToast}}" hint-placeholder-val="{{false}}">
+      <div role="status" style="font-size: 14px; color: #12663D; font-weight: 600">{{toast}}</div>
+    </sc-if>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between; font-size: 14px">
+        <span style="font-weight: 600">{{hechas}} de {{total}} aulas</span>
+        <span style="color: #4A525C">{{faltan}} pendientes</span>
+      </div>
+      <div style="height: 8px; border-radius: 999px; background: #E3E6EA; overflow: hidden">
+        <div style="height: 8px; border-radius: 999px; background: #1F4FBF; width: {{avance}}"></div>
+      </div>
+    </div>
+  </header>
+
+  <div style="display: flex; gap: 8px; padding: 12px 20px">
+    <button onClick="{{verPend}}" aria-pressed="{{pendPressed}}" style="flex: 1; height: 44px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; {{pendStyle}}">Pendientes</button>
+    <button onClick="{{verTodas}}" aria-pressed="{{todasPressed}}" style="flex: 1; height: 44px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; {{todasStyle}}">Todas</button>
+  </div>
+
+  <div style="flex: 1; overflow-y: auto; padding: 0 20px 12px; display: flex; flex-direction: column; gap: 10px">
+    <sc-if value="{{vacio}}" hint-placeholder-val="{{false}}">
+      <div style="margin-top: 40px; text-align: center; display: flex; flex-direction: column; gap: 6px; align-items: center">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#12663D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+        <strong style="font-size: 18px">Recorrido completo</strong>
+        <span style="font-size: 14px; color: #4A525C">{{hechas}} de {{total}} aulas registradas</span>
+      </div>
+    </sc-if>
+    <sc-for list="{{items}}" as="item" hint-placeholder-count="6">
+      <button onClick="{{item.open}}" style="text-align: left; width: 100%; background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; cursor: pointer; color: #1B1F24">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%">
+          <span style="font-size: 18px; font-weight: 700">{{item.id}}</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; background: {{item.bg}}; color: {{item.fg}}; border: 1px solid {{item.bd}}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{item.d}}"></path></svg>
+            {{item.label}}
+          </span>
+        </div>
+        <span style="font-size: 15px; font-weight: 500">{{item.docente}}</span>
+        <span style="font-size: 13px; color: #4A525C">{{item.materia}} · Grupo {{item.grupo}}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <footer style="background: #FFFFFF; border-top: 1px dashed #C9CED6; padding: 10px 20px 14px; display: flex; align-items: center; gap: 8px">
+    <span style="font-size: 12px; color: #4A525C; flex: 1">Controles del prototipo</span>
+    <button onClick="{{toggleRed}}" style="height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer; color: #1B1F24">{{redLabel}}</button>
+    <button onClick="{{masMin}}" style="height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer; color: #1B1F24">+5 min</button>
+  </footer>
+
+  <sc-if value="{{hayPanel}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; inset: 0; background: rgba(20, 24, 30, 0.45); display: flex; flex-direction: column; justify-content: flex-end">
+      <div role="dialog" aria-label="Registrar aula" style="background: #FFFFFF; border-radius: 20px 20px 0 0; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px">
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <span style="font-size: 22px; font-weight: 700">Aula {{sel.id}}</span>
+            <span style="font-size: 15px; font-weight: 500">{{sel.docente}}</span>
+            <span style="font-size: 13px; color: #4A525C">{{sel.materia}} · Grupo {{sel.grupo}} · Hora {{hora}} (automática)</span>
+          </div>
+          <button onClick="{{cerrar}}" style="height: 40px; padding: 0 12px; border-radius: 8px; border: none; background: #ECEEF1; font-size: 14px; font-weight: 600; cursor: pointer; color: #1B1F24">Cancelar</button>
+        </div>
+
+        <sc-if value="{{modoOpciones}}" hint-placeholder-val="{{true}}">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <sc-if value="{{esCorreccion}}" hint-placeholder-val="{{false}}">
+              <div style="font-size: 13px; padding: 8px 12px; border-radius: 8px; background: #FCEFD9; color: #8A4B00">Corregir este registro. El cambio queda en la bitácora.</div>
+            </sc-if>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+              <sc-for list="{{opciones}}" as="op" hint-placeholder-count="6">
+                <button onClick="{{op.pick}}" style="height: 64px; border-radius: 12px; border: 1px solid {{op.bd}}; background: {{op.bg}}; color: {{op.fg}}; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{op.d}}"></path></svg>
+                  {{op.label}}
+                </button>
+              </sc-for>
+            </div>
+            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #4A525C">Observación (opcional)
+              <input value="{{obs}}" onChange="{{setObs}}" maxlength="250" placeholder="Ej. el grupo está en el laboratorio" style="height: 44px; border-radius: 10px; border: 1px solid #C9CED6; padding: 0 12px; font-size: 15px; color: #1B1F24">
+            </label>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{modoSuplente}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">Nombre del suplente
+              <input value="{{sup}}" onChange="{{setSup}}" placeholder="Nombre y apellido" style="height: 48px; border-radius: 10px; border: 1px solid {{supBorde}}; padding: 0 12px; font-size: 16px; font-weight: 400; color: #1B1F24">
+            </label>
+            <sc-if value="{{hayErr}}" hint-placeholder-val="{{false}}">
+              <span role="alert" style="font-size: 14px; color: #A3221A">{{err}}</span>
+            </sc-if>
+            <div style="display: flex; gap: 10px">
+              <button onClick="{{volver}}" style="flex: 1; height: 52px; border-radius: 12px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 16px; font-weight: 600; cursor: pointer; color: #1B1F24">Volver</button>
+              <button onClick="{{guardarSup}}" style="flex: 2; height: 52px; border-radius: 12px; border: none; background: #1F4FBF; color: #FFFFFF; font-size: 16px; font-weight: 700; cursor: pointer">Guardar suplente</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{modoLlegada}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="font-size: 14px; padding: 10px 12px; border-radius: 8px; background: #EFEAFB; color: #5B3BB0">Marcado "Aún no llega" en el minuto {{selMin}}. Ahora es el minuto {{minuto}}: si registras la llegada quedará como <strong>{{prevision}}</strong>.</div>
+            <button onClick="{{llego}}" style="height: 64px; border-radius: 12px; border: none; background: #1F4FBF; color: #FFFFFF; font-size: 17px; font-weight: 700; cursor: pointer">Ya llegó</button>
+            <button onClick="{{cambiar}}" style="height: 52px; border-radius: 12px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 16px; font-weight: 600; cursor: pointer; color: #1B1F24">Cambiar situación</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+var IC = {
+  check: 'M5 12l5 5L20 7',
+  clock: 'M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z',
+  x: 'M6 6l12 12M18 6L6 18',
+  person: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  room: 'M4 21V9l8-5 8 5v12M9 21v-6h6v6',
+  hourglass: 'M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9',
+  circle: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z'
+};
+var EST = {
+  ATIEMPO: { label: 'A tiempo', fg: '#12663D', bg: '#E3F3EA', bd: '#BFE3CE', d: IC.check },
+  RETARDO: { label: 'Retardo', fg: '#8A4B00', bg: '#FCEFD9', bd: '#F2D3A1', d: IC.clock },
+  FALTA: { label: 'Falta', fg: '#A3221A', bg: '#FBE4E2', bd: '#F1BDB8', d: IC.x },
+  SUPLENTE: { label: 'Suplente', fg: '#1F4FBF', bg: '#E4ECFB', bd: '#BFD0F3', d: IC.person },
+  SINAL: { label: 'Sin alumnos', fg: '#4A525C', bg: '#ECEEF1', bd: '#D5D9DF', d: IC.room },
+  AUN: { label: 'Aún no llega', fg: '#5B3BB0', bg: '#EFEAFB', bd: '#D6CBF3', d: IC.hourglass },
+  PEND: { label: 'Pendiente', fg: '#4A525C', bg: '#FFFFFF', bd: '#C9CED6', d: IC.circle }
+};
+var AULAS = [
+  { id: 'A101', docente: 'Mtra. Laura Pérez Soto', materia: 'Cálculo Diferencial', grupo: '1A' },
+  { id: 'A102', docente: 'Mtro. Jorge Ramírez Luna', materia: 'Programación I', grupo: '1B' },
+  { id: 'A103', docente: 'Dra. Elena Torres Vega', materia: 'Bases de Datos', grupo: '3A' },
+  { id: 'A104', docente: 'Mtro. Ricardo Méndez Ruiz', materia: 'Redes', grupo: '5A' },
+  { id: 'A105', docente: 'Mtra. Sofía Castillo Mora', materia: 'Inglés III', grupo: '3B' },
+  { id: 'A106', docente: 'Mtro. Andrés Navarro Gil', materia: 'Física I', grupo: '1C' },
+  { id: 'A107', docente: 'Mtra. Patricia Rojas León', materia: 'Contabilidad', grupo: '2A' },
+  { id: 'A108', docente: 'Mtro. Héctor Salinas Paz', materia: 'Estadística', grupo: '4A' },
+  { id: 'A109', docente: 'Dra. Mónica Herrera Díaz', materia: 'Ética Profesional', grupo: '6A' },
+  { id: 'A110', docente: 'Mtro. Luis Fuentes Ortiz', materia: 'Sistemas Operativos', grupo: '5B' }
+];
+function porMinuto(m) {
+  if (m <= 15) return EST.ATIEMPO;
+  if (m <= 30) return EST.RETARDO;
+  return EST.FALTA;
+}
+function efectiva(r, m) {
+  if (!r) return Object.assign({}, EST.PEND, { pend: true });
+  if (r.e === 'PRESENTE') return EST.ATIEMPO;
+  if (r.e === 'RETARDO') return EST.RETARDO;
+  if (r.e === 'SUPLENTE') return Object.assign({}, EST.SUPLENTE, { label: 'Suplente: ' + r.sup });
+  if (r.e === 'SIN_ALUMNOS') return EST.SINAL;
+  if (r.e === 'SIN_DOCENTE') return EST.FALTA;
+  if (r.e === 'AUN') {
+    if (r.lleg !== null) {
+      var s = porMinuto(r.lleg);
+      return Object.assign({}, s, { label: s.label + ' (llegó min ' + r.lleg + ')' });
+    }
+    if (m > 30) return Object.assign({}, EST.FALTA, { label: 'Falta (no llegó)' });
+    return Object.assign({}, EST.AUN, { label: 'Aún no llega · min ' + r.min, pend: true });
+  }
+  return EST.PEND;
+}
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: null, modo: null, online: true, porEnviar: 0, minuto: 4, regs: {}, filtro: 'pend', sup: '', obs: '', err: '', toast: '' };
+  }
+  guardar(e, sup) {
+    var st = this.state;
+    var regs = Object.assign({}, st.regs);
+    regs[st.sel] = { e: e, min: st.minuto, sup: sup || '', lleg: null, obs: st.obs };
+    this.setState({
+      regs: regs,
+      porEnviar: st.online ? 0 : st.porEnviar + 1,
+      minuto: Math.min(59, st.minuto + 1),
+      sel: null, modo: null, sup: '', obs: '', err: '', toast: ''
+    });
+  }
+  renderVals() {
+    var self = this;
+    var st = this.state;
+    var m = st.minuto;
+    var hechas = 0;
+    var todos = AULAS.map(function (a) {
+      var s = efectiva(st.regs[a.id], m);
+      if (!s.pend) hechas += 1;
+      return Object.assign({}, a, s, { open: function () {
+        var r = st.regs[a.id];
+        var modo = (r && r.e === 'AUN' && r.lleg === null && m <= 30) ? 'llegada' : 'opciones';
+        self.setState({ sel: a.id, modo: modo, sup: '', obs: '', err: '', toast: '' });
+      } });
+    });
+    var items = st.filtro === 'pend' ? todos.filter(function (i) { return i.pend; }) : todos;
+    var sel = AULAS.filter(function (a) { return a.id === st.sel; })[0] || { id: '', docente: '', materia: '', grupo: '' };
+    var rSel = st.regs[st.sel];
+    var opDefs = [
+      ['PRESENTE', 'Presente', EST.ATIEMPO],
+      ['AUN', 'Aún no llega', EST.AUN],
+      ['RETARDO', 'Retardo', EST.RETARDO],
+      ['SUPLENTE', 'Suplente', EST.SUPLENTE],
+      ['SIN_ALUMNOS', 'Sin alumnos', EST.SINAL],
+      ['SIN_DOCENTE', 'Sin docente', EST.FALTA]
+    ];
+    var opciones = opDefs.map(function (o) {
+      return { label: o[1], fg: o[2].fg, bg: o[2].bg, bd: o[2].bd, d: o[2].d, pick: function () {
+        if (o[0] === 'SUPLENTE') { self.setState({ modo: 'suplente', err: '' }); return; }
+        self.guardar(o[0]);
+      } };
+    });
+    var activo = 'background: #1F4FBF; color: #FFFFFF; border: 1px solid #1F4FBF';
+    var inactivo = 'background: #FFFFFF; color: #1B1F24; border: 1px solid #C9CED6';
+    var pad = m < 10 ? '0' + m : '' + m;
+    return {
+      hora: '09:' + pad,
+      minuto: m,
+      syncText: st.online ? 'En línea · todo enviado' : 'Sin conexión · ' + st.porEnviar + ' por enviar',
+      syncBg: st.online ? '#E3F3EA' : '#FCEFD9',
+      syncFg: st.online ? '#12663D' : '#8A4B00',
+      hasToast: st.toast !== '',
+      toast: st.toast,
+      hechas: hechas,
+      total: AULAS.length,
+      faltan: AULAS.length - hechas,
+      avance: Math.round(hechas * 100 / AULAS.length) + '%',
+      pendStyle: st.filtro === 'pend' ? activo : inactivo,
+      todasStyle: st.filtro === 'todas' ? activo : inactivo,
+      pendPressed: st.filtro === 'pend' ? 'true' : 'false',
+      todasPressed: st.filtro === 'todas' ? 'true' : 'false',
+      verPend: function () { self.setState({ filtro: 'pend' }); },
+      verTodas: function () { self.setState({ filtro: 'todas' }); },
+      items: items,
+      vacio: items.length === 0,
+      redLabel: st.online ? 'Simular sin señal' : 'Recuperar señal',
+      toggleRed: function () {
+        if (st.online) { self.setState({ online: false, toast: '' }); }
+        else {
+          var n = st.porEnviar;
+          self.setState({ online: true, porEnviar: 0, toast: n > 0 ? n + ' registros enviados' : 'Conexión recuperada' });
+        }
+      },
+      masMin: function () { self.setState({ minuto: Math.min(59, st.minuto + 5) }); },
+      hayPanel: st.sel !== null,
+      sel: sel,
+      cerrar: function () { self.setState({ sel: null, modo: null, err: '' }); },
+      modoOpciones: st.modo === 'opciones',
+      modoSuplente: st.modo === 'suplente',
+      modoLlegada: st.modo === 'llegada',
+      esCorreccion: !!rSel,
+      opciones: opciones,
+      obs: st.obs,
+      setObs: function (ev) { self.setState({ obs: ev.target.value }); },
+      sup: st.sup,
+      setSup: function (ev) { self.setState({ sup: ev.target.value, err: '' }); },
+      supBorde: st.err ? '#A3221A' : '#C9CED6',
+      hayErr: st.err !== '',
+      err: st.err,
+      volver: function () { self.setState({ modo: 'opciones', err: '' }); },
+      guardarSup: function () {
+        if (st.sup.trim() === '') { self.setState({ err: 'Escribe el nombre del suplente para guardar.' }); return; }
+        self.guardar('SUPLENTE', st.sup.trim());
+      },
+      selMin: rSel ? rSel.min : 0,
+      prevision: porMinuto(m).label,
+      llego: function () {
+        var regs = Object.assign({}, st.regs);
+        regs[st.sel] = Object.assign({}, regs[st.sel], { lleg: m });
+        self.setState({ regs: regs, porEnviar: st.online ? 0 : st.porEnviar + 1, sel: null, modo: null });
+      },
+      cambiar: function () { self.setState({ modo: 'opciones' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

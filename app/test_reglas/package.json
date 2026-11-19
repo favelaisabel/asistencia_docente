@@ -1,0 +1,16 @@
+{
+  "name": "asistencia-docente-pruebas-reglas",
+  "private": true,
+  "type": "module",
+  "description": "Pruebas de las reglas de seguridad de Firestore en el emulador (PR-xx de 09_ROADMAP).",
+  "scripts": {
+    "test": "firebase emulators:exec --only firestore --project demo-asistencia-docente \"vitest run\"",
+    "emuladores": "firebase emulators:start --project demo-asistencia-docente"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^6.0.0",
+    "firebase": "^13.4.0",
+    "firebase-tools": "^15.37.0",
+    "vitest": "^5.1.1"
+  }
+}

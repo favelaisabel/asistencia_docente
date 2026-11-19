@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Web de Coordinación</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F4FBF}a:hover{color:#163A8C}
+button,input,select,textarea{font-family:inherit}
+table{border-collapse:collapse;width:100%}
+th{font-size:13px;font-weight:600;color:#4A525C;text-align:left;padding:10px 12px;border-bottom:1px solid #E3E6EA;white-space:nowrap}
+td{font-size:14px;padding:10px 12px;border-bottom:1px solid #EEF0F3;white-space:nowrap}
+</style>
+</helmet>
+<div style="min-height: 900px; box-sizing: border-box; background: #F5F6F8; color: #1B1F24; font-family: Inter, system-ui, sans-serif">
+
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E3E6EA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <strong style="font-size: 18px">Asistencia docente</strong>
+        <span style="font-size: 13px; color: #4A525C">Coordinación académica · Periodo 2026-2</span>
+      </div>
+      <nav aria-label="Secciones" style="display: flex; flex-wrap: wrap; gap: 6px">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+          <button onClick="{{t.pick}}" aria-current="{{t.current}}" style="height: 40px; padding: 0 16px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; {{t.style}}">{{t.label}}</button>
+        </sc-for>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+    <span style="font-size: 12px; color: #4A525C">Datos de ejemplo para validar el prototipo.</span>
+
+    <sc-if value="{{tabHoy}}" hint-placeholder-val="{{true}}">
+      <section style="display: flex; flex-direction: column; gap: 20px">
+        <h1 style="margin: 0; font-size: 24px">Hoy · miércoles 18 nov 2026</h1>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px">
+          <sc-for list="{{kpis}}" as="k" hint-placeholder-count="5">
+            <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 4px">
+              <span style="font-size: 13px; color: #4A525C">{{k.label}}</span>
+              <strong style="font-size: 28px; color: {{k.fg}}">{{k.valor}}</strong>
+              <span style="font-size: 12px; color: #4A525C">{{k.nota}}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 8px 0">
+          <h2 style="margin: 8px 16px 8px; font-size: 16px">Últimos registros</h2>
+          <div style="overflow-x: auto">
+            <table>
+              <thead><tr><th>Hora</th><th>Aula</th><th>Docente</th><th>Materia</th><th>Situación</th><th>Avisos</th></tr></thead>
+              <tbody>
+                <sc-for list="{{regs}}" as="r" hint-placeholder-count="6">
+                  <tr>
+                    <td>{{r.hora}}</td><td>{{r.aula}}</td><td>{{r.docente}}</td><td>{{r.materia}}</td>
+                    <td><span style="display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; background: {{r.bg}}; color: {{r.fg}}">{{r.sit}}</span></td>
+                    <td style="font-size: 13px; color: #8A4B00">{{r.aviso}}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{tabRegistros}}" hint-placeholder-val="{{false}}">
+      <section style="display: flex; flex-direction: column; gap: 16px">
+        <h1 style="margin: 0; font-size: 24px">Registros</h1>
+        <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end">
+          <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Fecha<input type="date" value="2026-11-18" style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"></label>
+          <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Turno<select style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"><option>Todos</option><option>Matutino</option><option>Vespertino</option></select></label>
+          <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Docente<input placeholder="Nombre o núm. de empleado" style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"></label>
+          <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Aula<input placeholder="A101" style="height: 40px; width: 90px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"></label>
+          <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Situación<select style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"><option>Todas</option><option>A tiempo</option><option>Retardo</option><option>Falta</option><option>Suplente</option><option>Sin alumnos</option></select></label>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+          <div style="flex: 999 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; overflow-x: auto">
+            <table>
+              <thead><tr><th>Hora</th><th>Aula</th><th>Docente</th><th>Situación</th><th></th></tr></thead>
+              <tbody>
+                <sc-for list="{{regs}}" as="r" hint-placeholder-count="6">
+                  <tr style="background: {{r.rowBg}}">
+                    <td>{{r.hora}}</td><td>{{r.aula}}</td><td>{{r.docente}}</td>
+                    <td><span style="display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; background: {{r.bg}}; color: {{r.fg}}">{{r.sit}}</span></td>
+                    <td><button onClick="{{r.ver}}" style="height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer; color: #1B1F24">Ver detalle</button></td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <aside style="flex: 1 1 320px; background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+            <sc-if value="{{sinDetalle}}" hint-placeholder-val="{{true}}">
+              <span style="font-size: 14px; color: #4A525C">Selecciona un registro para ver su historial y corregirlo.</span>
+            </sc-if>
+            <sc-if value="{{conDetalle}}" hint-placeholder-val="{{false}}">
+              <div style="display: flex; flex-direction: column; gap: 14px">
+                <div style="display: flex; flex-direction: column; gap: 2px">
+                  <strong style="font-size: 18px">{{det.aula}} · {{det.hora}}</strong>
+                  <span style="font-size: 14px">{{det.docente}}</span>
+                  <span style="font-size: 13px; color: #4A525C">{{det.materia}}</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <h2 style="margin: 0; font-size: 14px">Bitácora</h2>
+                  <sc-for list="{{bitacora}}" as="b" hint-placeholder-count="2">
+                    <div style="border-left: 0; background: #F5F6F8; border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px">
+                      <span style="font-size: 13px; font-weight: 600">v{{b.v}} · {{b.accion}} · {{b.hora}}</span>
+                      <span style="font-size: 13px">{{b.cambio}}</span>
+                      <span style="font-size: 12px; color: #4A525C">{{b.quien}}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid #EEF0F3; padding-top: 12px">
+                  <h2 style="margin: 0; font-size: 14px">Corregir</h2>
+                  <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Nueva situación
+                    <select onChange="{{setNueva}}" value="{{nueva}}" style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"><option>A tiempo</option><option>Retardo</option><option>Falta</option><option>Suplente</option><option>Sin alumnos</option></select>
+                  </label>
+                  <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Motivo (obligatorio)
+                    <textarea value="{{motivo}}" onChange="{{setMotivo}}" rows="3" style="border: 1px solid {{motivoBorde}}; border-radius: 8px; padding: 8px 10px; font-size: 14px; resize: vertical"></textarea>
+                  </label>
+                  <sc-if value="{{hayErrCorr}}" hint-placeholder-val="{{false}}">
+                    <span role="alert" style="font-size: 13px; color: #A3221A">Escribe el motivo de la corrección.</span>
+                  </sc-if>
+                  <button onClick="{{corregir}}" style="height: 42px; border-radius: 10px; border: none; background: #1F4FBF; color: #FFFFFF; font-size: 14px; font-weight: 700; cursor: pointer">Guardar corrección</button>
+                </div>
+              </div>
+            </sc-if>
+          </aside>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{tabReportes}}" hint-placeholder-val="{{false}}">
+      <section style="display: flex; flex-direction: column; gap: 16px; max-width: 720px">
+        <h1 style="margin: 0; font-size: 24px">Reportes</h1>
+        <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-size: 13px; color: #4A525C">Tipo</span>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <sc-for list="{{tipos}}" as="o" hint-placeholder-count="2">
+                <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="height: 40px; padding: 0 16px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; {{o.style}}">{{o.label}}</button>
+              </sc-for>
+            </div>
+          </div>
+          <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #4A525C">{{fechaLabel}}<input type="date" value="2026-11-18" style="height: 40px; width: 200px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"></label>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-size: 13px; color: #4A525C">Formato</span>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <sc-for list="{{formatos}}" as="o" hint-placeholder-count="2">
+                <button onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="height: 40px; padding: 0 16px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; {{o.style}}">{{o.label}}</button>
+              </sc-for>
+            </div>
+          </div>
+          <button onClick="{{generar}}" style="align-self: flex-start; height: 44px; padding: 0 20px; border-radius: 10px; border: none; background: #1F4FBF; color: #FFFFFF; font-size: 15px; font-weight: 700; cursor: pointer">Generar reporte</button>
+          <sc-if value="{{generado}}" hint-placeholder-val="{{false}}">
+            <div role="status" style="padding: 12px 14px; border-radius: 10px; background: #E3F3EA; color: #12663D; font-size: 14px; font-weight: 600">Se descargó {{archivo}}</div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{tabHorario}}" hint-placeholder-val="{{false}}">
+      <section style="display: flex; flex-direction: column; gap: 16px; max-width: 860px">
+        <h1 style="margin: 0; font-size: 24px">Horario</h1>
+        <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <strong style="font-size: 16px">Periodo activo: 2026-2 (11 ago – 12 dic)</strong>
+            <span style="font-size: 14px; color: #4A525C">{{horarioVigente}}</span>
+          </div>
+          <span style="font-size: 13px; color: #4A525C">Columnas de la plantilla: aula, núm. de empleado, docente, día, hora inicio, hora fin, materia, grupo.</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <a href="#plantilla" style="display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #C9CED6; font-size: 14px; font-weight: 600; text-decoration: none; color: #1B1F24">Descargar plantilla</a>
+            <button onClick="{{subirMal}}" style="height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 14px; font-weight: 600; cursor: pointer; color: #1B1F24">Subir archivo (ejemplo con errores)</button>
+            <button onClick="{{subirBien}}" style="height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #C9CED6; background: #FFFFFF; font-size: 14px; font-weight: 600; cursor: pointer; color: #1B1F24">Subir archivo (ejemplo correcto)</button>
+          </div>
+          <sc-if value="{{faseErrores}}" hint-placeholder-val="{{false}}">
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div role="alert" style="padding: 12px 14px; border-radius: 10px; background: #FBE4E2; color: #A3221A; font-size: 14px; font-weight: 600">No se guardó nada. Corrige el archivo y vuelve a subirlo. (3 errores)</div>
+              <div style="overflow-x: auto; border: 1px solid #E3E6EA; border-radius: 10px">
+                <table>
+                  <thead><tr><th>Fila</th><th>Columna</th><th>Problema</th></tr></thead>
+                  <tbody>
+                    <tr><td>14</td><td>núm. de empleado</td><td>El docente 10293 no existe en el catálogo.</td></tr>
+                    <tr><td>87</td><td>hora fin</td><td>La hora 22 está fuera del turno (7:00–21:00).</td></tr>
+                    <tr><td>203</td><td>aula / día / hora</td><td>El aula A104 ya tiene clase el martes a las 10:00 (fila 198).</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{faseLista}}" hint-placeholder-val="{{false}}">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #E4ECFB; color: #1F4FBF">
+              <span style="font-size: 14px; font-weight: 600; flex: 1">1 512 clases listas · 40 aulas · 40 docentes · sin errores</span>
+              <button onClick="{{activar}}" style="height: 40px; padding: 0 16px; border-radius: 10px; border: none; background: #1F4FBF; color: #FFFFFF; font-size: 14px; font-weight: 700; cursor: pointer">Activar horario</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{faseActiva}}" hint-placeholder-val="{{false}}">
+            <div role="status" style="padding: 12px 14px; border-radius: 10px; background: #E3F3EA; color: #12663D; font-size: 14px; font-weight: 600">Horario activado. El horario anterior quedó archivado.</div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{tabUsuarios}}" hint-placeholder-val="{{false}}">
+      <section style="display: flex; flex-direction: column; gap: 16px">
+        <h1 style="margin: 0; font-size: 24px">Usuarios</h1>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start">
+          <div style="flex: 999 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; overflow-x: auto">
+            <table>
+              <thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Estado</th></tr></thead>
+              <tbody>
+                <sc-for list="{{usuarios}}" as="u" hint-placeholder-count="2">
+                  <tr><td>{{u.nombre}}</td><td>{{u.correo}}</td><td>{{u.rol}}</td><td>{{u.estado}}</td></tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <form style="flex: 1 1 300px; background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+            <h2 style="margin: 0; font-size: 16px">Pre-registrar usuario</h2>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Correo institucional<input value="{{nCorreo}}" onChange="{{setCorreo}}" type="email" style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"></label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Nombre<input value="{{nNombre}}" onChange="{{setNombre}}" style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"></label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #4A525C">Rol<select value="{{nRol}}" onChange="{{setRol}}" style="height: 40px; border: 1px solid #C9CED6; border-radius: 8px; padding: 0 10px; font-size: 14px"><option>Encargado</option><option>Coordinación</option><option>Docente (v1.1)</option></select></label>
+            <sc-if value="{{hayErrUsr}}" hint-placeholder-val="{{false}}">
+              <span role="alert" style="font-size: 13px; color: #A3221A">{{errUsr}}</span>
+            </sc-if>
+            <button type="button" onClick="{{preregistrar}}" style="height: 42px; border-radius: 10px; border: none; background: #1F4FBF; color: #FFFFFF; font-size: 14px; font-weight: 700; cursor: pointer">Pre-registrar</button>
+            <span style="font-size: 12px; color: #4A525C">La persona crea su contraseña al entrar por primera vez y recibe este rol.</span>
+          </form>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+var C = {
+  ok: ['#12663D', '#E3F3EA'], ret: ['#8A4B00', '#FCEFD9'], falta: ['#A3221A', '#FBE4E2'],
+  sup: ['#1F4FBF', '#E4ECFB'], sin: ['#4A525C', '#ECEEF1']
+};
+var COLOR_POR_SIT = { 'A tiempo': C.ok, 'Retardo': C.ret, 'Falta': C.falta, 'Suplente': C.sup, 'Sin alumnos': C.sin };
+var BASE = [
+  { id: 1, hora: '09:04', aula: 'A101', docente: 'Mtra. Laura Pérez Soto', materia: 'Cálculo Diferencial', sit: 'A tiempo', aviso: '' },
+  { id: 2, hora: '09:06', aula: 'A102', docente: 'Mtro. Jorge Ramírez Luna', materia: 'Programación I', sit: 'Retardo', aviso: '' },
+  { id: 3, hora: '09:07', aula: 'A103', docente: 'Dra. Elena Torres Vega', materia: 'Bases de Datos', sit: 'A tiempo', aviso: 'Capturado sin conexión' },
+  { id: 4, hora: '09:09', aula: 'A104', docente: 'Mtro. Ricardo Méndez Ruiz', materia: 'Redes', sit: 'Falta', aviso: '' },
+  { id: 5, hora: '09:11', aula: 'A105', docente: 'Mtra. Sofía Castillo Mora', materia: 'Inglés III', sit: 'Suplente', aviso: '' },
+  { id: 6, hora: '09:13', aula: 'A106', docente: 'Mtro. Andrés Navarro Gil', materia: 'Física I', sit: 'Sin alumnos', aviso: 'Hora dudosa (reloj del celular +8 min)' }
+];
+function botonEstilo(activo) {
+  return activo ? 'background: #1F4FBF; color: #FFFFFF; border: 1px solid #1F4FBF' : 'background: #FFFFFF; color: #1B1F24; border: 1px solid #C9CED6';
+}
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tab: 'hoy', sits: {}, sel: null, nueva: 'A tiempo', motivo: '', errCorr: false, extra: {},
+      tipo: 'Diario', formato: 'Excel', generado: false, fase: 'inicio',
+      usuarios: [
+        { nombre: 'Carlos Medina Ríos', correo: 'cmedina@universidad.edu.mx', rol: 'Encargado', estado: 'Activo' },
+        { nombre: 'Ana Ruiz Campos', correo: 'aruiz@universidad.edu.mx', rol: 'Coordinación', estado: 'Activo' }
+      ],
+      nCorreo: '', nNombre: '', nRol: 'Encargado', errUsr: ''
+    };
+  }
+  renderVals() {
+    var self = this;
+    var st = this.state;
+    var tabDefs = [['hoy', 'Hoy'], ['registros', 'Registros'], ['reportes', 'Reportes'], ['horario', 'Horario'], ['usuarios', 'Usuarios']];
+    var tabs = tabDefs.map(function (t) {
+      var on = st.tab === t[0];
+      return { label: t[1], current: on ? 'page' : 'false', style: botonEstilo(on), pick: function () { self.setState({ tab: t[0] }); } };
+    });
+    var regs = BASE.map(function (r) {
+      var sit = st.sits[r.id] || r.sit;
+      var col = COLOR_POR_SIT[sit] || C.sin;
+      return Object.assign({}, r, { sit: sit, fg: col[0], bg: col[1], rowBg: st.sel === r.id ? '#F0F4FD' : '#FFFFFF',
+        ver: function () { self.setState({ sel: r.id, nueva: sit, motivo: '', errCorr: false }); } });
+    });
+    var det = regs.filter(function (r) { return r.id === st.sel; })[0] || { aula: '', hora: '', docente: '', materia: '' };
+    var bit = [];
+    if (det.id) {
+      bit.push({ v: 1, accion: 'CREAR', hora: det.hora, cambio: 'Situación: ' + (BASE[det.id - 1].sit), quien: 'Carlos Medina Ríos · Encargado' });
+      (st.extra[det.id] || []).forEach(function (e, i) { bit.push({ v: i + 2, accion: 'CORREGIR', hora: e.hora, cambio: e.cambio, quien: 'Ana Ruiz Campos · Coordinación' }); });
+    }
+    var tipos = ['Diario', 'Semanal'].map(function (t) {
+      return { label: t, pressed: st.tipo === t ? 'true' : 'false', style: botonEstilo(st.tipo === t), pick: function () { self.setState({ tipo: t, generado: false }); } };
+    });
+    var formatos = ['PDF', 'Excel'].map(function (f) {
+      return { label: f, pressed: st.formato === f ? 'true' : 'false', style: botonEstilo(st.formato === f), pick: function () { self.setState({ formato: f, generado: false }); } };
+    });
+    var ext = st.formato === 'PDF' ? '.pdf' : '.xlsx';
+    var archivo = st.tipo === 'Diario' ? 'reporte_diario_2026-11-18' + ext : 'reporte_semanal_2026-11-16_al_2026-11-20' + ext;
+    return {
+      tabs: tabs,
+      tabHoy: st.tab === 'hoy', tabRegistros: st.tab === 'registros', tabReportes: st.tab === 'reportes',
+      tabHorario: st.tab === 'horario', tabUsuarios: st.tab === 'usuarios',
+      kpis: [
+        { label: 'Registros', valor: '312', nota: 'de 560 previstos hoy', fg: '#1B1F24' },
+        { label: 'Faltas', valor: '9', nota: 'pendientes de justificar', fg: '#A3221A' },
+        { label: 'Retardos', valor: '14', nota: '16–30 min', fg: '#8A4B00' },
+        { label: 'Suplencias', valor: '3', nota: 'con nombre registrado', fg: '#1F4FBF' },
+        { label: 'Horas dudosas', valor: '1', nota: 'reloj del celular desfasado', fg: '#8A4B00' }
+      ],
+      regs: regs,
+      sinDetalle: st.sel === null, conDetalle: st.sel !== null,
+      det: det, bitacora: bit,
+      nueva: st.nueva,
+      setNueva: function (ev) { self.setState({ nueva: ev.target.value }); },
+      motivo: st.motivo,
+      setMotivo: function (ev) { self.setState({ motivo: ev.target.value, errCorr: false }); },
+      motivoBorde: st.errCorr ? '#A3221A' : '#C9CED6',
+      hayErrCorr: st.errCorr,
+      corregir: function () {
+        if (st.motivo.trim() === '') { self.setState({ errCorr: true }); return; }
+        var sits = Object.assign({}, st.sits); var antes = sits[st.sel] || BASE[st.sel - 1].sit;
+        sits[st.sel] = st.nueva;
+        var extra = Object.assign({}, st.extra);
+        extra[st.sel] = (extra[st.sel] || []).concat([{ hora: '12:40', cambio: antes + ' → ' + st.nueva + ' · Motivo: ' + st.motivo.trim() }]);
+        self.setState({ sits: sits, extra: extra, motivo: '', errCorr: false });
+      },
+      tipos: tipos, formatos: formatos,
+      fechaLabel: st.tipo === 'Diario' ? 'Fecha' : 'Cualquier día de la semana',
+      generar: function () { self.setState({ generado: true }); },
+      generado: st.generado, archivo: archivo,
+      horarioVigente: st.fase === 'activa' ? 'Horario vigente: importado hoy (1 512 clases).' : 'Horario vigente: importado el 4 ago 2026 (1 498 clases).',
+      subirMal: function () { self.setState({ fase: 'errores' }); },
+      subirBien: function () { self.setState({ fase: 'lista' }); },
+      activar: function () { self.setState({ fase: 'activa' }); },
+      faseErrores: st.fase === 'errores', faseLista: st.fase === 'lista', faseActiva: st.fase === 'activa',
+      usuarios: st.usuarios,
+      nCorreo: st.nCorreo, nNombre: st.nNombre, nRol: st.nRol,
+      setCorreo: function (ev) { self.setState({ nCorreo: ev.target.value, errUsr: '' }); },
+      setNombre: function (ev) { self.setState({ nNombre: ev.target.value, errUsr: '' }); },
+      setRol: function (ev) { self.setState({ nRol: ev.target.value }); },
+      hayErrUsr: st.errUsr !== '', errUsr: st.errUsr,
+      preregistrar: function () {
+        var c = st.nCorreo.trim(); var n = st.nNombre.trim();
+        if (c.indexOf('@') < 1 || n === '') { self.setState({ errUsr: 'Escribe un correo válido y el nombre completo.' }); return; }
+        var ya = st.usuarios.some(function (u) { return u.correo.toLowerCase() === c.toLowerCase(); });
+        if (ya) { self.setState({ errUsr: 'Ese correo ya está registrado.' }); return; }
+        self.setState({ usuarios: st.usuarios.concat([{ nombre: n, correo: c, rol: st.nRol, estado: 'Pendiente de registro' }]), nCorreo: '', nNombre: '', errUsr: '' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
