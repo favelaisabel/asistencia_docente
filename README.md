@@ -65,6 +65,15 @@ npm ci            # instala Firebase CLI y herramientas de prueba en el proyecto
 
    Consola del emulador: http://localhost:4000
 
+   **Datos de demostración** (otra terminal, con el emulador encendido):
+
+   ```bash
+   cd app/test_reglas
+   npm run sembrar
+   ```
+
+   Crea el usuario de Coordinación `coordinacion@demo.edu.mx` / `Coordinacion2026` y un pre-registro de encargado (`encargado@demo.edu.mx`) para probar el **Primer acceso**. El enlace para confirmar el correo aparece en la terminal del emulador.
+
 2. **Ejecutar la app** (otra terminal):
 
    ```bash
@@ -117,3 +126,4 @@ El CI de GitHub ejecuta lo mismo en cada push y pull request.
 | **Ciclo II** | Diseño y planificación | **Completado** (excepción: validar prototipo antes de I3) |
 | 10. Entorno de desarrollo | app/ + README + CI | Cerrada (CI en verde en GitHub) |
 | 11. Estándares de codificación | docs/10_ESTANDARES.md + AGENTS.md | Cerrada |
+| 12. Incremento I1 · Acceso y roles | docs/12_INCREMENTOS.md | Terminado, pendiente PR y PM-03 |

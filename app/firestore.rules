@@ -1,10 +1,122 @@
 rules_version = '2';
 
 // Reglas de seguridad de Firestore (ADR-005, 08_SEGURIDAD_CONTINUIDAD §5).
-// I0: todo denegado por defecto (C-05). Cada incremento abre solo lo que
-// necesita, con pruebas en test_reglas/.
+// Todo está denegado salvo lo que se abre explícitamente aquí (C-05).
+// Cada cambio lleva pruebas en test_reglas/ (10_ESTANDARES §13).
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // ---------- Funciones comunes ----------
+
+    function autenticado() {
+      return request.auth != null;
+    }
+
+    function rutaUsuario(uid) {
+      return /databases/$(database)/documents/usuarios/$(uid);
+    }
+
+    function rutaPreregistro(correo) {
+      return /databases/$(database)/documents/preregistros/$(correo);
+    }
+
+    function correoSesion() {
+      return request.auth.token.email.lower();
+    }
+
+    // C-21: el primer acceso exige correo confirmado (evita suplantar un pre-registro).
+    function correoVerificado() {
+      return request.auth.token.email_verified == true;
+    }
+
+    // C-06: sesión iniciada, perfil existente y activo.
+    function perfilActivo() {
+      return autenticado()
+        && exists(rutaUsuario(request.auth.uid))
+        && get(rutaUsuario(request.auth.uid)).data.activo == true;
+    }
+
+    function tieneRol(rol) {
+      return perfilActivo() && get(rutaUsuario(request.auth.uid)).data.rol == rol;
+    }
+
+    function esCoordinacion() {
+      return tieneRol('COO');
+    }
+
+    function textoValido(valor, minimo, maximo) {
+      return valor is string && valor.size() >= minimo && valor.size() <= maximo;
+    }
+
+    // ---------- usuarios/{uid} (06_MODELO_DATOS §4.2) ----------
+
+    function creaPerfilDesdePreregistro(uid) {
+      let pre = get(rutaPreregistro(correoSesion())).data;
+      let datos = request.resource.data;
+      let campos = ['correo', 'nombre', 'rol', 'activo', 'creadoEn', 'esquemaVersion'];
+      return autenticado()
+        && request.auth.uid == uid
+        && correoVerificado()
+        && pre.usado == false
+        && getAfter(rutaPreregistro(correoSesion())).data.usado == true
+        && datos.keys().hasOnly(campos)
+        && datos.keys().hasAll(campos)
+        && datos.correo == correoSesion()
+        && datos.nombre == pre.nombre
+        && datos.rol == pre.rol
+        && datos.activo == true
+        && datos.creadoEn == request.time
+        && datos.esquemaVersion == 1;
+    }
+
+    match /usuarios/{uid} {
+      allow get: if (autenticado() && request.auth.uid == uid) || esCoordinacion();
+      allow list: if esCoordinacion();
+      allow create: if creaPerfilDesdePreregistro(uid);
+      // Coordinación solo cambia `activo`, y nunca el de su propia cuenta.
+      allow update: if esCoordinacion()
+        && uid != request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activo'])
+        && request.resource.data.activo is bool;
+      allow delete: if false;
+    }
+
+    // ---------- preregistros/{correo} (06_MODELO_DATOS §4.3) ----------
+
+    function preregistroValido(correo) {
+      let datos = request.resource.data;
+      let campos = ['correo', 'nombre', 'rol', 'usado', 'creadoPor', 'creadoEn', 'esquemaVersion'];
+      return datos.keys().hasOnly(campos)
+        && datos.keys().hasAll(campos)
+        && datos.correo == correo
+        && correo == correo.lower()
+        && correo.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && textoValido(datos.nombre, 3, 120)
+        // MVP: encargado y Coordinación. Docentes en v1.1 (EP7).
+        && datos.rol in ['ENC', 'COO']
+        && datos.usado == false
+        && datos.creadoPor == request.auth.uid
+        && datos.creadoEn == request.time
+        && datos.esquemaVersion == 1;
+    }
+
+    match /preregistros/{correo} {
+      allow get: if (autenticado() && correoSesion() == correo) || esCoordinacion();
+      allow list: if esCoordinacion();
+      allow create: if esCoordinacion() && preregistroValido(correo);
+      // La propia persona lo marca como usado al crear su perfil (mismo lote).
+      allow update: if autenticado()
+        && correoSesion() == correo
+        && correoVerificado()
+        && resource.data.usado == false
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['usado'])
+        && request.resource.data.usado == true
+        && existsAfter(rutaUsuario(request.auth.uid));
+      allow delete: if esCoordinacion() && resource.data.usado == false;
+    }
+
+    // ---------- Todo lo demás ----------
+
     match /{document=**} {
       allow read, write: if false;
     }

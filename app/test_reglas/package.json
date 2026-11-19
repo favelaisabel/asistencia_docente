@@ -5,7 +5,9 @@
   "description": "Pruebas de las reglas de seguridad de Firestore en el emulador (PR-xx de 09_ROADMAP).",
   "scripts": {
     "test": "firebase emulators:exec --only firestore --project demo-asistencia-docente \"vitest run\"",
-    "emuladores": "firebase emulators:start --project demo-asistencia-docente"
+    "emuladores": "firebase emulators:start --project demo-asistencia-docente",
+    "sembrar": "node sembrar.mjs",
+    "prueba-sembrado": "firebase emulators:exec --only auth,firestore --project demo-asistencia-docente \"node sembrar.mjs\""
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "^6.0.0",

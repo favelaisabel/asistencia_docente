@@ -243,3 +243,21 @@ Esta matriz se mantiene viva: cada incremento actualiza la columna de pruebas co
 - [x] Definición de terminado común
 - [x] Matriz de trazabilidad requisito → implementación → prueba
 - [x] Aprobación del desarrollador responsable · 2026-11-18
+
+---
+
+## 10. Actualizaciones de la matriz de trazabilidad
+
+### I1 (2026-11-19)
+
+| Requisito | Implementación real | Pruebas reales |
+|---|---|---|
+| RF-001 | `modulos/autenticacion/presentacion/entrar_pantalla.dart`, `datos/firebase_autenticacion_repositorio.dart` | PW-01 (`test/modulos/autenticacion/entrar_pantalla_test.dart`), PM-03 |
+| RF-002 | `componentes.dart` (BotonCerrarSesion) | PW-04 (`test/app_test.dart`) |
+| RF-004 | `modulos/usuarios/`, `datos/firestore_usuario_repositorio.dart`, reglas `usuarios` y `preregistros` | PR-02, PR-03, PR-04, PR-18 a PR-22 (`test_reglas/acceso.test.js`), PM-03 |
+| RF-005 | Firebase Auth (sesión persistente) | PM-03 |
+| C-01 | `dominio/contrasena.dart` | PU-21 (`test/dominio/acceso_test.dart`) |
+| C-21 | `firestore.rules` (`creaPerfilDesdePreregistro`) | PR-03 |
+| Navegación por rol | `modulos/autenticacion/aplicacion/destino.dart`, `app/router.dart` | PU-23 (`test/modulos/autenticacion/destino_test.dart`), PW-04 |
+
+Nuevos IDs de prueba: PU-20 a PU-23, PW-04, PR-18 a PR-22, PM-03. PI-01 se sustituye por PM-03 (12_INCREMENTOS, D-2).

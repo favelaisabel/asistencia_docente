@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'localizacion.dart';
+import 'router.dart';
 import 'tema.dart';
 
-/// App Android del encargado. En I1 se reemplaza la pantalla inicial por el
-/// inicio de sesión y la navegación por rol.
-class AppMovil extends StatelessWidget {
+/// App Android del encargado de recorridos.
+class AppMovil extends ConsumerWidget {
   const AppMovil({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
       title: 'Asistencia docente',
       theme: temaApp(),
       debugShowCheckedModeBanner: false,
-      home: const _PantallaEntornoListo(plataforma: 'App del encargado'),
-    );
-  }
-}
-
-class _PantallaEntornoListo extends StatelessWidget {
-  const _PantallaEntornoListo({required this.plataforma});
-
-  final String plataforma;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Asistencia docente')),
-      body: Center(child: Text('$plataforma · entorno listo')),
+      locale: idiomaApp,
+      supportedLocales: idiomasSoportados,
+      localizationsDelegates: delegadosLocalizacion,
+      routerConfig: ref.watch(routerMovilProvider),
     );
   }
 }

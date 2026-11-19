@@ -266,3 +266,11 @@ La exportación administrada de Firestore requiere plan de pago (V), por eso el 
 **Derechos ARCO:** puede ejercer sus derechos de acceso, rectificación, cancelación y oposición ante **[UNIDAD DE TRANSPARENCIA, CORREO Y DOMICILIO]**.
 
 **Aviso integral:** disponible en **[ENLACE]**.
+
+---
+
+## Anexo B — Actualizaciones durante la construcción
+
+| Fecha | Cambio | Origen |
+|---|---|---|
+| 2026-11-19 | **A-16** (amenaza nueva): alguien que conoce un correo pre-registrado crea la cuenta antes que la persona real y obtiene su rol. **C-21** (control nuevo): el perfil solo se crea con `email_verified == true`, desde el pre-registro, con su mismo rol y marcándolo como usado en el mismo lote. Verificado por PR-03 | Incremento I1 (12_INCREMENTOS, D-1) |
