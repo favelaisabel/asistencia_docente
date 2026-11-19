@@ -1,0 +1,481 @@
+﻿aula,num_empleado,docente,dia,hora_inicio,hora_fin,materia,grupo
+A101,1001,Laura Pérez Soto,lunes,7,9,Cálculo Diferencial,1A
+A101,1001,Laura Pérez Soto,lunes,9,11,Programación I,1A
+A101,1001,Laura Pérez Soto,lunes,11,13,Bases de Datos,1A
+A101,1001,Laura Pérez Soto,lunes,13,14,Redes,1A
+A101,1011,Gabriela Núñez Ríos,lunes,14,16,Inglés III,1B
+A101,1011,Gabriela Núñez Ríos,lunes,16,18,Física I,1B
+A101,1011,Gabriela Núñez Ríos,lunes,18,20,Contabilidad,1B
+A101,1011,Gabriela Núñez Ríos,lunes,20,21,Estadística,1B
+A102,1002,Jorge Ramírez Luna,lunes,7,9,Programación I,2A
+A102,1002,Jorge Ramírez Luna,lunes,9,11,Bases de Datos,2A
+A102,1002,Jorge Ramírez Luna,lunes,11,13,Redes,2A
+A102,1002,Jorge Ramírez Luna,lunes,13,14,Inglés III,2A
+A102,1012,Fernando Aguilar Cruz,lunes,14,16,Física I,2B
+A102,1012,Fernando Aguilar Cruz,lunes,16,18,Contabilidad,2B
+A102,1012,Fernando Aguilar Cruz,lunes,18,20,Estadística,2B
+A102,1012,Fernando Aguilar Cruz,lunes,20,21,Ética Profesional,2B
+A103,1003,Elena Torres Vega,lunes,7,9,Bases de Datos,3A
+A103,1003,Elena Torres Vega,lunes,9,11,Redes,3A
+A103,1003,Elena Torres Vega,lunes,11,13,Inglés III,3A
+A103,1003,Elena Torres Vega,lunes,13,14,Física I,3A
+A103,1013,Adriana Vargas Peña,lunes,14,16,Contabilidad,3B
+A103,1013,Adriana Vargas Peña,lunes,16,18,Estadística,3B
+A103,1013,Adriana Vargas Peña,lunes,18,20,Ética Profesional,3B
+A103,1013,Adriana Vargas Peña,lunes,20,21,Sistemas Operativos,3B
+A104,1004,Ricardo Méndez Ruiz,lunes,7,9,Redes,4A
+A104,1004,Ricardo Méndez Ruiz,lunes,9,11,Inglés III,4A
+A104,1004,Ricardo Méndez Ruiz,lunes,11,13,Física I,4A
+A104,1004,Ricardo Méndez Ruiz,lunes,13,14,Contabilidad,4A
+A104,1014,Óscar Delgado Ibarra,lunes,14,16,Estadística,4B
+A104,1014,Óscar Delgado Ibarra,lunes,16,18,Ética Profesional,4B
+A104,1014,Óscar Delgado Ibarra,lunes,18,20,Sistemas Operativos,4B
+A104,1014,Óscar Delgado Ibarra,lunes,20,21,Cálculo Diferencial,4B
+A105,1005,Sofía Castillo Mora,lunes,7,9,Inglés III,5A
+A105,1005,Sofía Castillo Mora,lunes,9,11,Física I,5A
+A105,1005,Sofía Castillo Mora,lunes,11,13,Contabilidad,5A
+A105,1005,Sofía Castillo Mora,lunes,13,14,Estadística,5A
+A105,1015,Claudia Morales Vega,lunes,14,16,Ética Profesional,5B
+A105,1015,Claudia Morales Vega,lunes,16,18,Sistemas Operativos,5B
+A105,1015,Claudia Morales Vega,lunes,18,20,Cálculo Diferencial,5B
+A105,1015,Claudia Morales Vega,lunes,20,21,Programación I,5B
+A106,1006,Andrés Navarro Gil,lunes,7,9,Física I,6A
+A106,1006,Andrés Navarro Gil,lunes,9,11,Contabilidad,6A
+A106,1006,Andrés Navarro Gil,lunes,11,13,Estadística,6A
+A106,1006,Andrés Navarro Gil,lunes,13,14,Ética Profesional,6A
+A106,1016,Raúl Cortés Lima,lunes,14,16,Sistemas Operativos,6B
+A106,1016,Raúl Cortés Lima,lunes,16,18,Cálculo Diferencial,6B
+A106,1016,Raúl Cortés Lima,lunes,18,20,Programación I,6B
+A106,1016,Raúl Cortés Lima,lunes,20,21,Bases de Datos,6B
+A107,1007,Patricia Rojas León,lunes,7,9,Contabilidad,1A
+A107,1007,Patricia Rojas León,lunes,9,11,Estadística,1A
+A107,1007,Patricia Rojas León,lunes,11,13,Ética Profesional,1A
+A107,1007,Patricia Rojas León,lunes,13,14,Sistemas Operativos,1A
+A107,1017,Verónica Silva Mena,lunes,14,16,Cálculo Diferencial,1B
+A107,1017,Verónica Silva Mena,lunes,16,18,Programación I,1B
+A107,1017,Verónica Silva Mena,lunes,18,20,Bases de Datos,1B
+A107,1017,Verónica Silva Mena,lunes,20,21,Redes,1B
+A108,1008,Héctor Salinas Paz,lunes,7,9,Estadística,2A
+A108,1008,Héctor Salinas Paz,lunes,9,11,Ética Profesional,2A
+A108,1008,Héctor Salinas Paz,lunes,11,13,Sistemas Operativos,2A
+A108,1008,Héctor Salinas Paz,lunes,13,14,Cálculo Diferencial,2A
+A108,1018,Arturo Campos Reyes,lunes,14,16,Programación I,2B
+A108,1018,Arturo Campos Reyes,lunes,16,18,Bases de Datos,2B
+A108,1018,Arturo Campos Reyes,lunes,18,20,Redes,2B
+A108,1018,Arturo Campos Reyes,lunes,20,21,Inglés III,2B
+A109,1009,Mónica Herrera Díaz,lunes,7,9,Ética Profesional,3A
+A109,1009,Mónica Herrera Díaz,lunes,9,11,Sistemas Operativos,3A
+A109,1009,Mónica Herrera Díaz,lunes,11,13,Cálculo Diferencial,3A
+A109,1009,Mónica Herrera Díaz,lunes,13,14,Programación I,3A
+A109,1019,Daniela Ortega Luna,lunes,14,16,Bases de Datos,3B
+A109,1019,Daniela Ortega Luna,lunes,16,18,Redes,3B
+A109,1019,Daniela Ortega Luna,lunes,18,20,Inglés III,3B
+A109,1019,Daniela Ortega Luna,lunes,20,21,Física I,3B
+A110,1010,Luis Fuentes Ortiz,lunes,7,9,Sistemas Operativos,4A
+A110,1010,Luis Fuentes Ortiz,lunes,9,11,Cálculo Diferencial,4A
+A110,1010,Luis Fuentes Ortiz,lunes,11,13,Programación I,4A
+A110,1010,Luis Fuentes Ortiz,lunes,13,14,Bases de Datos,4A
+A110,1020,Miguel Ángel Ruiz Soto,lunes,14,16,Redes,4B
+A110,1020,Miguel Ángel Ruiz Soto,lunes,16,18,Inglés III,4B
+A110,1020,Miguel Ángel Ruiz Soto,lunes,18,20,Física I,4B
+A110,1020,Miguel Ángel Ruiz Soto,lunes,20,21,Contabilidad,4B
+A101,1001,Laura Pérez Soto,martes,7,9,Cálculo Diferencial,1A
+A101,1001,Laura Pérez Soto,martes,9,11,Programación I,1A
+A101,1001,Laura Pérez Soto,martes,11,13,Bases de Datos,1A
+A101,1001,Laura Pérez Soto,martes,13,14,Redes,1A
+A101,1011,Gabriela Núñez Ríos,martes,14,16,Inglés III,1B
+A101,1011,Gabriela Núñez Ríos,martes,16,18,Física I,1B
+A101,1011,Gabriela Núñez Ríos,martes,18,20,Contabilidad,1B
+A101,1011,Gabriela Núñez Ríos,martes,20,21,Estadística,1B
+A102,1002,Jorge Ramírez Luna,martes,7,9,Programación I,2A
+A102,1002,Jorge Ramírez Luna,martes,9,11,Bases de Datos,2A
+A102,1002,Jorge Ramírez Luna,martes,11,13,Redes,2A
+A102,1002,Jorge Ramírez Luna,martes,13,14,Inglés III,2A
+A102,1012,Fernando Aguilar Cruz,martes,14,16,Física I,2B
+A102,1012,Fernando Aguilar Cruz,martes,16,18,Contabilidad,2B
+A102,1012,Fernando Aguilar Cruz,martes,18,20,Estadística,2B
+A102,1012,Fernando Aguilar Cruz,martes,20,21,Ética Profesional,2B
+A103,1003,Elena Torres Vega,martes,7,9,Bases de Datos,3A
+A103,1003,Elena Torres Vega,martes,9,11,Redes,3A
+A103,1003,Elena Torres Vega,martes,11,13,Inglés III,3A
+A103,1003,Elena Torres Vega,martes,13,14,Física I,3A
+A103,1013,Adriana Vargas Peña,martes,14,16,Contabilidad,3B
+A103,1013,Adriana Vargas Peña,martes,16,18,Estadística,3B
+A103,1013,Adriana Vargas Peña,martes,18,20,Ética Profesional,3B
+A103,1013,Adriana Vargas Peña,martes,20,21,Sistemas Operativos,3B
+A104,1004,Ricardo Méndez Ruiz,martes,7,9,Redes,4A
+A104,1004,Ricardo Méndez Ruiz,martes,9,11,Inglés III,4A
+A104,1004,Ricardo Méndez Ruiz,martes,11,13,Física I,4A
+A104,1004,Ricardo Méndez Ruiz,martes,13,14,Contabilidad,4A
+A104,1014,Óscar Delgado Ibarra,martes,14,16,Estadística,4B
+A104,1014,Óscar Delgado Ibarra,martes,16,18,Ética Profesional,4B
+A104,1014,Óscar Delgado Ibarra,martes,18,20,Sistemas Operativos,4B
+A104,1014,Óscar Delgado Ibarra,martes,20,21,Cálculo Diferencial,4B
+A105,1005,Sofía Castillo Mora,martes,7,9,Inglés III,5A
+A105,1005,Sofía Castillo Mora,martes,9,11,Física I,5A
+A105,1005,Sofía Castillo Mora,martes,11,13,Contabilidad,5A
+A105,1005,Sofía Castillo Mora,martes,13,14,Estadística,5A
+A105,1015,Claudia Morales Vega,martes,14,16,Ética Profesional,5B
+A105,1015,Claudia Morales Vega,martes,16,18,Sistemas Operativos,5B
+A105,1015,Claudia Morales Vega,martes,18,20,Cálculo Diferencial,5B
+A105,1015,Claudia Morales Vega,martes,20,21,Programación I,5B
+A106,1006,Andrés Navarro Gil,martes,7,9,Física I,6A
+A106,1006,Andrés Navarro Gil,martes,9,11,Contabilidad,6A
+A106,1006,Andrés Navarro Gil,martes,11,13,Estadística,6A
+A106,1006,Andrés Navarro Gil,martes,13,14,Ética Profesional,6A
+A106,1016,Raúl Cortés Lima,martes,14,16,Sistemas Operativos,6B
+A106,1016,Raúl Cortés Lima,martes,16,18,Cálculo Diferencial,6B
+A106,1016,Raúl Cortés Lima,martes,18,20,Programación I,6B
+A106,1016,Raúl Cortés Lima,martes,20,21,Bases de Datos,6B
+A107,1007,Patricia Rojas León,martes,7,9,Contabilidad,1A
+A107,1007,Patricia Rojas León,martes,9,11,Estadística,1A
+A107,1007,Patricia Rojas León,martes,11,13,Ética Profesional,1A
+A107,1007,Patricia Rojas León,martes,13,14,Sistemas Operativos,1A
+A107,1017,Verónica Silva Mena,martes,14,16,Cálculo Diferencial,1B
+A107,1017,Verónica Silva Mena,martes,16,18,Programación I,1B
+A107,1017,Verónica Silva Mena,martes,18,20,Bases de Datos,1B
+A107,1017,Verónica Silva Mena,martes,20,21,Redes,1B
+A108,1008,Héctor Salinas Paz,martes,7,9,Estadística,2A
+A108,1008,Héctor Salinas Paz,martes,9,11,Ética Profesional,2A
+A108,1008,Héctor Salinas Paz,martes,11,13,Sistemas Operativos,2A
+A108,1008,Héctor Salinas Paz,martes,13,14,Cálculo Diferencial,2A
+A108,1018,Arturo Campos Reyes,martes,14,16,Programación I,2B
+A108,1018,Arturo Campos Reyes,martes,16,18,Bases de Datos,2B
+A108,1018,Arturo Campos Reyes,martes,18,20,Redes,2B
+A108,1018,Arturo Campos Reyes,martes,20,21,Inglés III,2B
+A109,1009,Mónica Herrera Díaz,martes,7,9,Ética Profesional,3A
+A109,1009,Mónica Herrera Díaz,martes,9,11,Sistemas Operativos,3A
+A109,1009,Mónica Herrera Díaz,martes,11,13,Cálculo Diferencial,3A
+A109,1009,Mónica Herrera Díaz,martes,13,14,Programación I,3A
+A109,1019,Daniela Ortega Luna,martes,14,16,Bases de Datos,3B
+A109,1019,Daniela Ortega Luna,martes,16,18,Redes,3B
+A109,1019,Daniela Ortega Luna,martes,18,20,Inglés III,3B
+A109,1019,Daniela Ortega Luna,martes,20,21,Física I,3B
+A110,1010,Luis Fuentes Ortiz,martes,7,9,Sistemas Operativos,4A
+A110,1010,Luis Fuentes Ortiz,martes,9,11,Cálculo Diferencial,4A
+A110,1010,Luis Fuentes Ortiz,martes,11,13,Programación I,4A
+A110,1010,Luis Fuentes Ortiz,martes,13,14,Bases de Datos,4A
+A110,1020,Miguel Ángel Ruiz Soto,martes,14,16,Redes,4B
+A110,1020,Miguel Ángel Ruiz Soto,martes,16,18,Inglés III,4B
+A110,1020,Miguel Ángel Ruiz Soto,martes,18,20,Física I,4B
+A110,1020,Miguel Ángel Ruiz Soto,martes,20,21,Contabilidad,4B
+A101,1001,Laura Pérez Soto,miércoles,7,9,Cálculo Diferencial,1A
+A101,1001,Laura Pérez Soto,miércoles,9,11,Programación I,1A
+A101,1001,Laura Pérez Soto,miércoles,11,13,Bases de Datos,1A
+A101,1001,Laura Pérez Soto,miércoles,13,14,Redes,1A
+A101,1011,Gabriela Núñez Ríos,miércoles,14,16,Inglés III,1B
+A101,1011,Gabriela Núñez Ríos,miércoles,16,18,Física I,1B
+A101,1011,Gabriela Núñez Ríos,miércoles,18,20,Contabilidad,1B
+A101,1011,Gabriela Núñez Ríos,miércoles,20,21,Estadística,1B
+A102,1002,Jorge Ramírez Luna,miércoles,7,9,Programación I,2A
+A102,1002,Jorge Ramírez Luna,miércoles,9,11,Bases de Datos,2A
+A102,1002,Jorge Ramírez Luna,miércoles,11,13,Redes,2A
+A102,1002,Jorge Ramírez Luna,miércoles,13,14,Inglés III,2A
+A102,1012,Fernando Aguilar Cruz,miércoles,14,16,Física I,2B
+A102,1012,Fernando Aguilar Cruz,miércoles,16,18,Contabilidad,2B
+A102,1012,Fernando Aguilar Cruz,miércoles,18,20,Estadística,2B
+A102,1012,Fernando Aguilar Cruz,miércoles,20,21,Ética Profesional,2B
+A103,1003,Elena Torres Vega,miércoles,7,9,Bases de Datos,3A
+A103,1003,Elena Torres Vega,miércoles,9,11,Redes,3A
+A103,1003,Elena Torres Vega,miércoles,11,13,Inglés III,3A
+A103,1003,Elena Torres Vega,miércoles,13,14,Física I,3A
+A103,1013,Adriana Vargas Peña,miércoles,14,16,Contabilidad,3B
+A103,1013,Adriana Vargas Peña,miércoles,16,18,Estadística,3B
+A103,1013,Adriana Vargas Peña,miércoles,18,20,Ética Profesional,3B
+A103,1013,Adriana Vargas Peña,miércoles,20,21,Sistemas Operativos,3B
+A104,1004,Ricardo Méndez Ruiz,miércoles,7,9,Redes,4A
+A104,1004,Ricardo Méndez Ruiz,miércoles,9,11,Inglés III,4A
+A104,1004,Ricardo Méndez Ruiz,miércoles,11,13,Física I,4A
+A104,1004,Ricardo Méndez Ruiz,miércoles,13,14,Contabilidad,4A
+A104,1014,Óscar Delgado Ibarra,miércoles,14,16,Estadística,4B
+A104,1014,Óscar Delgado Ibarra,miércoles,16,18,Ética Profesional,4B
+A104,1014,Óscar Delgado Ibarra,miércoles,18,20,Sistemas Operativos,4B
+A104,1014,Óscar Delgado Ibarra,miércoles,20,21,Cálculo Diferencial,4B
+A105,1005,Sofía Castillo Mora,miércoles,7,9,Inglés III,5A
+A105,1005,Sofía Castillo Mora,miércoles,9,11,Física I,5A
+A105,1005,Sofía Castillo Mora,miércoles,11,13,Contabilidad,5A
+A105,1005,Sofía Castillo Mora,miércoles,13,14,Estadística,5A
+A105,1015,Claudia Morales Vega,miércoles,14,16,Ética Profesional,5B
+A105,1015,Claudia Morales Vega,miércoles,16,18,Sistemas Operativos,5B
+A105,1015,Claudia Morales Vega,miércoles,18,20,Cálculo Diferencial,5B
+A105,1015,Claudia Morales Vega,miércoles,20,21,Programación I,5B
+A106,1006,Andrés Navarro Gil,miércoles,7,9,Física I,6A
+A106,1006,Andrés Navarro Gil,miércoles,9,11,Contabilidad,6A
+A106,1006,Andrés Navarro Gil,miércoles,11,13,Estadística,6A
+A106,1006,Andrés Navarro Gil,miércoles,13,14,Ética Profesional,6A
+A106,1016,Raúl Cortés Lima,miércoles,14,16,Sistemas Operativos,6B
+A106,1016,Raúl Cortés Lima,miércoles,16,18,Cálculo Diferencial,6B
+A106,1016,Raúl Cortés Lima,miércoles,18,20,Programación I,6B
+A106,1016,Raúl Cortés Lima,miércoles,20,21,Bases de Datos,6B
+A107,1007,Patricia Rojas León,miércoles,7,9,Contabilidad,1A
+A107,1007,Patricia Rojas León,miércoles,9,11,Estadística,1A
+A107,1007,Patricia Rojas León,miércoles,11,13,Ética Profesional,1A
+A107,1007,Patricia Rojas León,miércoles,13,14,Sistemas Operativos,1A
+A107,1017,Verónica Silva Mena,miércoles,14,16,Cálculo Diferencial,1B
+A107,1017,Verónica Silva Mena,miércoles,16,18,Programación I,1B
+A107,1017,Verónica Silva Mena,miércoles,18,20,Bases de Datos,1B
+A107,1017,Verónica Silva Mena,miércoles,20,21,Redes,1B
+A108,1008,Héctor Salinas Paz,miércoles,7,9,Estadística,2A
+A108,1008,Héctor Salinas Paz,miércoles,9,11,Ética Profesional,2A
+A108,1008,Héctor Salinas Paz,miércoles,11,13,Sistemas Operativos,2A
+A108,1008,Héctor Salinas Paz,miércoles,13,14,Cálculo Diferencial,2A
+A108,1018,Arturo Campos Reyes,miércoles,14,16,Programación I,2B
+A108,1018,Arturo Campos Reyes,miércoles,16,18,Bases de Datos,2B
+A108,1018,Arturo Campos Reyes,miércoles,18,20,Redes,2B
+A108,1018,Arturo Campos Reyes,miércoles,20,21,Inglés III,2B
+A109,1009,Mónica Herrera Díaz,miércoles,7,9,Ética Profesional,3A
+A109,1009,Mónica Herrera Díaz,miércoles,9,11,Sistemas Operativos,3A
+A109,1009,Mónica Herrera Díaz,miércoles,11,13,Cálculo Diferencial,3A
+A109,1009,Mónica Herrera Díaz,miércoles,13,14,Programación I,3A
+A109,1019,Daniela Ortega Luna,miércoles,14,16,Bases de Datos,3B
+A109,1019,Daniela Ortega Luna,miércoles,16,18,Redes,3B
+A109,1019,Daniela Ortega Luna,miércoles,18,20,Inglés III,3B
+A109,1019,Daniela Ortega Luna,miércoles,20,21,Física I,3B
+A110,1010,Luis Fuentes Ortiz,miércoles,7,9,Sistemas Operativos,4A
+A110,1010,Luis Fuentes Ortiz,miércoles,9,11,Cálculo Diferencial,4A
+A110,1010,Luis Fuentes Ortiz,miércoles,11,13,Programación I,4A
+A110,1010,Luis Fuentes Ortiz,miércoles,13,14,Bases de Datos,4A
+A110,1020,Miguel Ángel Ruiz Soto,miércoles,14,16,Redes,4B
+A110,1020,Miguel Ángel Ruiz Soto,miércoles,16,18,Inglés III,4B
+A110,1020,Miguel Ángel Ruiz Soto,miércoles,18,20,Física I,4B
+A110,1020,Miguel Ángel Ruiz Soto,miércoles,20,21,Contabilidad,4B
+A101,1001,Laura Pérez Soto,jueves,7,9,Cálculo Diferencial,1A
+A101,1001,Laura Pérez Soto,jueves,9,11,Programación I,1A
+A101,1001,Laura Pérez Soto,jueves,11,13,Bases de Datos,1A
+A101,1001,Laura Pérez Soto,jueves,13,14,Redes,1A
+A101,1011,Gabriela Núñez Ríos,jueves,14,16,Inglés III,1B
+A101,1011,Gabriela Núñez Ríos,jueves,16,18,Física I,1B
+A101,1011,Gabriela Núñez Ríos,jueves,18,20,Contabilidad,1B
+A101,1011,Gabriela Núñez Ríos,jueves,20,21,Estadística,1B
+A102,1002,Jorge Ramírez Luna,jueves,7,9,Programación I,2A
+A102,1002,Jorge Ramírez Luna,jueves,9,11,Bases de Datos,2A
+A102,1002,Jorge Ramírez Luna,jueves,11,13,Redes,2A
+A102,1002,Jorge Ramírez Luna,jueves,13,14,Inglés III,2A
+A102,1012,Fernando Aguilar Cruz,jueves,14,16,Física I,2B
+A102,1012,Fernando Aguilar Cruz,jueves,16,18,Contabilidad,2B
+A102,1012,Fernando Aguilar Cruz,jueves,18,20,Estadística,2B
+A102,1012,Fernando Aguilar Cruz,jueves,20,21,Ética Profesional,2B
+A103,1003,Elena Torres Vega,jueves,7,9,Bases de Datos,3A
+A103,1003,Elena Torres Vega,jueves,9,11,Redes,3A
+A103,1003,Elena Torres Vega,jueves,11,13,Inglés III,3A
+A103,1003,Elena Torres Vega,jueves,13,14,Física I,3A
+A103,1013,Adriana Vargas Peña,jueves,14,16,Contabilidad,3B
+A103,1013,Adriana Vargas Peña,jueves,16,18,Estadística,3B
+A103,1013,Adriana Vargas Peña,jueves,18,20,Ética Profesional,3B
+A103,1013,Adriana Vargas Peña,jueves,20,21,Sistemas Operativos,3B
+A104,1004,Ricardo Méndez Ruiz,jueves,7,9,Redes,4A
+A104,1004,Ricardo Méndez Ruiz,jueves,9,11,Inglés III,4A
+A104,1004,Ricardo Méndez Ruiz,jueves,11,13,Física I,4A
+A104,1004,Ricardo Méndez Ruiz,jueves,13,14,Contabilidad,4A
+A104,1014,Óscar Delgado Ibarra,jueves,14,16,Estadística,4B
+A104,1014,Óscar Delgado Ibarra,jueves,16,18,Ética Profesional,4B
+A104,1014,Óscar Delgado Ibarra,jueves,18,20,Sistemas Operativos,4B
+A104,1014,Óscar Delgado Ibarra,jueves,20,21,Cálculo Diferencial,4B
+A105,1005,Sofía Castillo Mora,jueves,7,9,Inglés III,5A
+A105,1005,Sofía Castillo Mora,jueves,9,11,Física I,5A
+A105,1005,Sofía Castillo Mora,jueves,11,13,Contabilidad,5A
+A105,1005,Sofía Castillo Mora,jueves,13,14,Estadística,5A
+A105,1015,Claudia Morales Vega,jueves,14,16,Ética Profesional,5B
+A105,1015,Claudia Morales Vega,jueves,16,18,Sistemas Operativos,5B
+A105,1015,Claudia Morales Vega,jueves,18,20,Cálculo Diferencial,5B
+A105,1015,Claudia Morales Vega,jueves,20,21,Programación I,5B
+A106,1006,Andrés Navarro Gil,jueves,7,9,Física I,6A
+A106,1006,Andrés Navarro Gil,jueves,9,11,Contabilidad,6A
+A106,1006,Andrés Navarro Gil,jueves,11,13,Estadística,6A
+A106,1006,Andrés Navarro Gil,jueves,13,14,Ética Profesional,6A
+A106,1016,Raúl Cortés Lima,jueves,14,16,Sistemas Operativos,6B
+A106,1016,Raúl Cortés Lima,jueves,16,18,Cálculo Diferencial,6B
+A106,1016,Raúl Cortés Lima,jueves,18,20,Programación I,6B
+A106,1016,Raúl Cortés Lima,jueves,20,21,Bases de Datos,6B
+A107,1007,Patricia Rojas León,jueves,7,9,Contabilidad,1A
+A107,1007,Patricia Rojas León,jueves,9,11,Estadística,1A
+A107,1007,Patricia Rojas León,jueves,11,13,Ética Profesional,1A
+A107,1007,Patricia Rojas León,jueves,13,14,Sistemas Operativos,1A
+A107,1017,Verónica Silva Mena,jueves,14,16,Cálculo Diferencial,1B
+A107,1017,Verónica Silva Mena,jueves,16,18,Programación I,1B
+A107,1017,Verónica Silva Mena,jueves,18,20,Bases de Datos,1B
+A107,1017,Verónica Silva Mena,jueves,20,21,Redes,1B
+A108,1008,Héctor Salinas Paz,jueves,7,9,Estadística,2A
+A108,1008,Héctor Salinas Paz,jueves,9,11,Ética Profesional,2A
+A108,1008,Héctor Salinas Paz,jueves,11,13,Sistemas Operativos,2A
+A108,1008,Héctor Salinas Paz,jueves,13,14,Cálculo Diferencial,2A
+A108,1018,Arturo Campos Reyes,jueves,14,16,Programación I,2B
+A108,1018,Arturo Campos Reyes,jueves,16,18,Bases de Datos,2B
+A108,1018,Arturo Campos Reyes,jueves,18,20,Redes,2B
+A108,1018,Arturo Campos Reyes,jueves,20,21,Inglés III,2B
+A109,1009,Mónica Herrera Díaz,jueves,7,9,Ética Profesional,3A
+A109,1009,Mónica Herrera Díaz,jueves,9,11,Sistemas Operativos,3A
+A109,1009,Mónica Herrera Díaz,jueves,11,13,Cálculo Diferencial,3A
+A109,1009,Mónica Herrera Díaz,jueves,13,14,Programación I,3A
+A109,1019,Daniela Ortega Luna,jueves,14,16,Bases de Datos,3B
+A109,1019,Daniela Ortega Luna,jueves,16,18,Redes,3B
+A109,1019,Daniela Ortega Luna,jueves,18,20,Inglés III,3B
+A109,1019,Daniela Ortega Luna,jueves,20,21,Física I,3B
+A110,1010,Luis Fuentes Ortiz,jueves,7,9,Sistemas Operativos,4A
+A110,1010,Luis Fuentes Ortiz,jueves,9,11,Cálculo Diferencial,4A
+A110,1010,Luis Fuentes Ortiz,jueves,11,13,Programación I,4A
+A110,1010,Luis Fuentes Ortiz,jueves,13,14,Bases de Datos,4A
+A110,1020,Miguel Ángel Ruiz Soto,jueves,14,16,Redes,4B
+A110,1020,Miguel Ángel Ruiz Soto,jueves,16,18,Inglés III,4B
+A110,1020,Miguel Ángel Ruiz Soto,jueves,18,20,Física I,4B
+A110,1020,Miguel Ángel Ruiz Soto,jueves,20,21,Contabilidad,4B
+A101,1001,Laura Pérez Soto,viernes,7,9,Cálculo Diferencial,1A
+A101,1001,Laura Pérez Soto,viernes,9,11,Programación I,1A
+A101,1001,Laura Pérez Soto,viernes,11,13,Bases de Datos,1A
+A101,1001,Laura Pérez Soto,viernes,13,14,Redes,1A
+A101,1011,Gabriela Núñez Ríos,viernes,14,16,Inglés III,1B
+A101,1011,Gabriela Núñez Ríos,viernes,16,18,Física I,1B
+A101,1011,Gabriela Núñez Ríos,viernes,18,20,Contabilidad,1B
+A101,1011,Gabriela Núñez Ríos,viernes,20,21,Estadística,1B
+A102,1002,Jorge Ramírez Luna,viernes,7,9,Programación I,2A
+A102,1002,Jorge Ramírez Luna,viernes,9,11,Bases de Datos,2A
+A102,1002,Jorge Ramírez Luna,viernes,11,13,Redes,2A
+A102,1002,Jorge Ramírez Luna,viernes,13,14,Inglés III,2A
+A102,1012,Fernando Aguilar Cruz,viernes,14,16,Física I,2B
+A102,1012,Fernando Aguilar Cruz,viernes,16,18,Contabilidad,2B
+A102,1012,Fernando Aguilar Cruz,viernes,18,20,Estadística,2B
+A102,1012,Fernando Aguilar Cruz,viernes,20,21,Ética Profesional,2B
+A103,1003,Elena Torres Vega,viernes,7,9,Bases de Datos,3A
+A103,1003,Elena Torres Vega,viernes,9,11,Redes,3A
+A103,1003,Elena Torres Vega,viernes,11,13,Inglés III,3A
+A103,1003,Elena Torres Vega,viernes,13,14,Física I,3A
+A103,1013,Adriana Vargas Peña,viernes,14,16,Contabilidad,3B
+A103,1013,Adriana Vargas Peña,viernes,16,18,Estadística,3B
+A103,1013,Adriana Vargas Peña,viernes,18,20,Ética Profesional,3B
+A103,1013,Adriana Vargas Peña,viernes,20,21,Sistemas Operativos,3B
+A104,1004,Ricardo Méndez Ruiz,viernes,7,9,Redes,4A
+A104,1004,Ricardo Méndez Ruiz,viernes,9,11,Inglés III,4A
+A104,1004,Ricardo Méndez Ruiz,viernes,11,13,Física I,4A
+A104,1004,Ricardo Méndez Ruiz,viernes,13,14,Contabilidad,4A
+A104,1014,Óscar Delgado Ibarra,viernes,14,16,Estadística,4B
+A104,1014,Óscar Delgado Ibarra,viernes,16,18,Ética Profesional,4B
+A104,1014,Óscar Delgado Ibarra,viernes,18,20,Sistemas Operativos,4B
+A104,1014,Óscar Delgado Ibarra,viernes,20,21,Cálculo Diferencial,4B
+A105,1005,Sofía Castillo Mora,viernes,7,9,Inglés III,5A
+A105,1005,Sofía Castillo Mora,viernes,9,11,Física I,5A
+A105,1005,Sofía Castillo Mora,viernes,11,13,Contabilidad,5A
+A105,1005,Sofía Castillo Mora,viernes,13,14,Estadística,5A
+A105,1015,Claudia Morales Vega,viernes,14,16,Ética Profesional,5B
+A105,1015,Claudia Morales Vega,viernes,16,18,Sistemas Operativos,5B
+A105,1015,Claudia Morales Vega,viernes,18,20,Cálculo Diferencial,5B
+A105,1015,Claudia Morales Vega,viernes,20,21,Programación I,5B
+A106,1006,Andrés Navarro Gil,viernes,7,9,Física I,6A
+A106,1006,Andrés Navarro Gil,viernes,9,11,Contabilidad,6A
+A106,1006,Andrés Navarro Gil,viernes,11,13,Estadística,6A
+A106,1006,Andrés Navarro Gil,viernes,13,14,Ética Profesional,6A
+A106,1016,Raúl Cortés Lima,viernes,14,16,Sistemas Operativos,6B
+A106,1016,Raúl Cortés Lima,viernes,16,18,Cálculo Diferencial,6B
+A106,1016,Raúl Cortés Lima,viernes,18,20,Programación I,6B
+A106,1016,Raúl Cortés Lima,viernes,20,21,Bases de Datos,6B
+A107,1007,Patricia Rojas León,viernes,7,9,Contabilidad,1A
+A107,1007,Patricia Rojas León,viernes,9,11,Estadística,1A
+A107,1007,Patricia Rojas León,viernes,11,13,Ética Profesional,1A
+A107,1007,Patricia Rojas León,viernes,13,14,Sistemas Operativos,1A
+A107,1017,Verónica Silva Mena,viernes,14,16,Cálculo Diferencial,1B
+A107,1017,Verónica Silva Mena,viernes,16,18,Programación I,1B
+A107,1017,Verónica Silva Mena,viernes,18,20,Bases de Datos,1B
+A107,1017,Verónica Silva Mena,viernes,20,21,Redes,1B
+A108,1008,Héctor Salinas Paz,viernes,7,9,Estadística,2A
+A108,1008,Héctor Salinas Paz,viernes,9,11,Ética Profesional,2A
+A108,1008,Héctor Salinas Paz,viernes,11,13,Sistemas Operativos,2A
+A108,1008,Héctor Salinas Paz,viernes,13,14,Cálculo Diferencial,2A
+A108,1018,Arturo Campos Reyes,viernes,14,16,Programación I,2B
+A108,1018,Arturo Campos Reyes,viernes,16,18,Bases de Datos,2B
+A108,1018,Arturo Campos Reyes,viernes,18,20,Redes,2B
+A108,1018,Arturo Campos Reyes,viernes,20,21,Inglés III,2B
+A109,1009,Mónica Herrera Díaz,viernes,7,9,Ética Profesional,3A
+A109,1009,Mónica Herrera Díaz,viernes,9,11,Sistemas Operativos,3A
+A109,1009,Mónica Herrera Díaz,viernes,11,13,Cálculo Diferencial,3A
+A109,1009,Mónica Herrera Díaz,viernes,13,14,Programación I,3A
+A109,1019,Daniela Ortega Luna,viernes,14,16,Bases de Datos,3B
+A109,1019,Daniela Ortega Luna,viernes,16,18,Redes,3B
+A109,1019,Daniela Ortega Luna,viernes,18,20,Inglés III,3B
+A109,1019,Daniela Ortega Luna,viernes,20,21,Física I,3B
+A110,1010,Luis Fuentes Ortiz,viernes,7,9,Sistemas Operativos,4A
+A110,1010,Luis Fuentes Ortiz,viernes,9,11,Cálculo Diferencial,4A
+A110,1010,Luis Fuentes Ortiz,viernes,11,13,Programación I,4A
+A110,1010,Luis Fuentes Ortiz,viernes,13,14,Bases de Datos,4A
+A110,1020,Miguel Ángel Ruiz Soto,viernes,14,16,Redes,4B
+A110,1020,Miguel Ángel Ruiz Soto,viernes,16,18,Inglés III,4B
+A110,1020,Miguel Ángel Ruiz Soto,viernes,18,20,Física I,4B
+A110,1020,Miguel Ángel Ruiz Soto,viernes,20,21,Contabilidad,4B
+A101,1001,Laura Pérez Soto,sábado,7,9,Cálculo Diferencial,1A
+A101,1001,Laura Pérez Soto,sábado,9,11,Programación I,1A
+A101,1001,Laura Pérez Soto,sábado,11,13,Bases de Datos,1A
+A101,1001,Laura Pérez Soto,sábado,13,14,Redes,1A
+A101,1011,Gabriela Núñez Ríos,sábado,14,16,Inglés III,1B
+A101,1011,Gabriela Núñez Ríos,sábado,16,18,Física I,1B
+A101,1011,Gabriela Núñez Ríos,sábado,18,20,Contabilidad,1B
+A101,1011,Gabriela Núñez Ríos,sábado,20,21,Estadística,1B
+A102,1002,Jorge Ramírez Luna,sábado,7,9,Programación I,2A
+A102,1002,Jorge Ramírez Luna,sábado,9,11,Bases de Datos,2A
+A102,1002,Jorge Ramírez Luna,sábado,11,13,Redes,2A
+A102,1002,Jorge Ramírez Luna,sábado,13,14,Inglés III,2A
+A102,1012,Fernando Aguilar Cruz,sábado,14,16,Física I,2B
+A102,1012,Fernando Aguilar Cruz,sábado,16,18,Contabilidad,2B
+A102,1012,Fernando Aguilar Cruz,sábado,18,20,Estadística,2B
+A102,1012,Fernando Aguilar Cruz,sábado,20,21,Ética Profesional,2B
+A103,1003,Elena Torres Vega,sábado,7,9,Bases de Datos,3A
+A103,1003,Elena Torres Vega,sábado,9,11,Redes,3A
+A103,1003,Elena Torres Vega,sábado,11,13,Inglés III,3A
+A103,1003,Elena Torres Vega,sábado,13,14,Física I,3A
+A103,1013,Adriana Vargas Peña,sábado,14,16,Contabilidad,3B
+A103,1013,Adriana Vargas Peña,sábado,16,18,Estadística,3B
+A103,1013,Adriana Vargas Peña,sábado,18,20,Ética Profesional,3B
+A103,1013,Adriana Vargas Peña,sábado,20,21,Sistemas Operativos,3B
+A104,1004,Ricardo Méndez Ruiz,sábado,7,9,Redes,4A
+A104,1004,Ricardo Méndez Ruiz,sábado,9,11,Inglés III,4A
+A104,1004,Ricardo Méndez Ruiz,sábado,11,13,Física I,4A
+A104,1004,Ricardo Méndez Ruiz,sábado,13,14,Contabilidad,4A
+A104,1014,Óscar Delgado Ibarra,sábado,14,16,Estadística,4B
+A104,1014,Óscar Delgado Ibarra,sábado,16,18,Ética Profesional,4B
+A104,1014,Óscar Delgado Ibarra,sábado,18,20,Sistemas Operativos,4B
+A104,1014,Óscar Delgado Ibarra,sábado,20,21,Cálculo Diferencial,4B
+A105,1005,Sofía Castillo Mora,sábado,7,9,Inglés III,5A
+A105,1005,Sofía Castillo Mora,sábado,9,11,Física I,5A
+A105,1005,Sofía Castillo Mora,sábado,11,13,Contabilidad,5A
+A105,1005,Sofía Castillo Mora,sábado,13,14,Estadística,5A
+A105,1015,Claudia Morales Vega,sábado,14,16,Ética Profesional,5B
+A105,1015,Claudia Morales Vega,sábado,16,18,Sistemas Operativos,5B
+A105,1015,Claudia Morales Vega,sábado,18,20,Cálculo Diferencial,5B
+A105,1015,Claudia Morales Vega,sábado,20,21,Programación I,5B
+A106,1006,Andrés Navarro Gil,sábado,7,9,Física I,6A
+A106,1006,Andrés Navarro Gil,sábado,9,11,Contabilidad,6A
+A106,1006,Andrés Navarro Gil,sábado,11,13,Estadística,6A
+A106,1006,Andrés Navarro Gil,sábado,13,14,Ética Profesional,6A
+A106,1016,Raúl Cortés Lima,sábado,14,16,Sistemas Operativos,6B
+A106,1016,Raúl Cortés Lima,sábado,16,18,Cálculo Diferencial,6B
+A106,1016,Raúl Cortés Lima,sábado,18,20,Programación I,6B
+A106,1016,Raúl Cortés Lima,sábado,20,21,Bases de Datos,6B
+A107,1007,Patricia Rojas León,sábado,7,9,Contabilidad,1A
+A107,1007,Patricia Rojas León,sábado,9,11,Estadística,1A
+A107,1007,Patricia Rojas León,sábado,11,13,Ética Profesional,1A
+A107,1007,Patricia Rojas León,sábado,13,14,Sistemas Operativos,1A
+A107,1017,Verónica Silva Mena,sábado,14,16,Cálculo Diferencial,1B
+A107,1017,Verónica Silva Mena,sábado,16,18,Programación I,1B
+A107,1017,Verónica Silva Mena,sábado,18,20,Bases de Datos,1B
+A107,1017,Verónica Silva Mena,sábado,20,21,Redes,1B
+A108,1008,Héctor Salinas Paz,sábado,7,9,Estadística,2A
+A108,1008,Héctor Salinas Paz,sábado,9,11,Ética Profesional,2A
+A108,1008,Héctor Salinas Paz,sábado,11,13,Sistemas Operativos,2A
+A108,1008,Héctor Salinas Paz,sábado,13,14,Cálculo Diferencial,2A
+A108,1018,Arturo Campos Reyes,sábado,14,16,Programación I,2B
+A108,1018,Arturo Campos Reyes,sábado,16,18,Bases de Datos,2B
+A108,1018,Arturo Campos Reyes,sábado,18,20,Redes,2B
+A108,1018,Arturo Campos Reyes,sábado,20,21,Inglés III,2B
+A109,1009,Mónica Herrera Díaz,sábado,7,9,Ética Profesional,3A
+A109,1009,Mónica Herrera Díaz,sábado,9,11,Sistemas Operativos,3A
+A109,1009,Mónica Herrera Díaz,sábado,11,13,Cálculo Diferencial,3A
+A109,1009,Mónica Herrera Díaz,sábado,13,14,Programación I,3A
+A109,1019,Daniela Ortega Luna,sábado,14,16,Bases de Datos,3B
+A109,1019,Daniela Ortega Luna,sábado,16,18,Redes,3B
+A109,1019,Daniela Ortega Luna,sábado,18,20,Inglés III,3B
+A109,1019,Daniela Ortega Luna,sábado,20,21,Física I,3B
+A110,1010,Luis Fuentes Ortiz,sábado,7,9,Sistemas Operativos,4A
+A110,1010,Luis Fuentes Ortiz,sábado,9,11,Cálculo Diferencial,4A
+A110,1010,Luis Fuentes Ortiz,sábado,11,13,Programación I,4A
+A110,1010,Luis Fuentes Ortiz,sábado,13,14,Bases de Datos,4A
+A110,1020,Miguel Ángel Ruiz Soto,sábado,14,16,Redes,4B
+A110,1020,Miguel Ángel Ruiz Soto,sábado,16,18,Inglés III,4B
+A110,1020,Miguel Ángel Ruiz Soto,sábado,18,20,Física I,4B
+A110,1020,Miguel Ángel Ruiz Soto,sábado,20,21,Contabilidad,4B

@@ -47,6 +47,12 @@ Future<void> inicializarFirebase() async {
     );
   }
   await Firebase.initializeApp(options: _opcionesDemo);
+  // Memoria local persistente también en web (ADR-003, RNF-001). Debe
+  // configurarse antes de conectar con el emulador.
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
+    cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+  );
   await FirebaseAuth.instance.useAuthEmulator(hostEmulador, 9099);
   FirebaseFirestore.instance.useFirestoreEmulator(hostEmulador, 8080);
 }

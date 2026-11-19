@@ -4,19 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../dominio/sesion.dart';
 import '../../autenticacion/aplicacion/providers.dart';
 import '../../autenticacion/presentacion/componentes.dart';
+import '../../bitacora/presentacion/hoy_pantalla.dart';
+import '../../bitacora/presentacion/registros_pantalla.dart';
+import '../../horario/presentacion/horario_pantalla.dart';
+import '../../reportes/presentacion/reportes_pantalla.dart';
 import '../../usuarios/presentacion/usuarios_pantalla.dart';
 
-/// Panel web de Coordinación (W-02 a W-06). Las pestañas se completan en
-/// los incrementos indicados.
+/// Panel web de Coordinación (W-02 a W-06).
 class CoordinacionPantalla extends ConsumerWidget {
   const CoordinacionPantalla({super.key});
 
-  static const _pestanas = <(String, String?)>[
-    ('Hoy', 'I5'),
-    ('Registros', 'I5'),
-    ('Reportes', 'I6'),
-    ('Horario', 'I2'),
-    ('Usuarios', null),
+  static const _pestanas = <(String, Widget)>[
+    ('Hoy', HoyPantalla()),
+    ('Registros', RegistrosPantalla()),
+    ('Reportes', ReportesPantalla()),
+    ('Horario', HorarioPantalla()),
+    ('Usuarios', UsuariosPantalla()),
   ];
 
   @override
@@ -25,7 +28,6 @@ class CoordinacionPantalla extends ConsumerWidget {
     final nombre = sesion is ConPerfil ? sesion.usuario.nombre : '';
     return DefaultTabController(
       length: _pestanas.length,
-      initialIndex: _pestanas.length - 1,
       child: Scaffold(
         appBar: AppBar(
           title: Column(
@@ -45,17 +47,7 @@ class CoordinacionPantalla extends ConsumerWidget {
           ),
         ),
         body: TabBarView(
-          children: [
-            for (final (titulo, incremento) in _pestanas)
-              if (incremento == null)
-                const UsuariosPantalla()
-              else
-                Center(
-                  child: Text(
-                    '$titulo: disponible en el incremento $incremento.',
-                  ),
-                ),
-          ],
+          children: [for (final (_, pantalla) in _pestanas) pantalla],
         ),
       ),
     );

@@ -261,3 +261,13 @@ Esta matriz se mantiene viva: cada incremento actualiza la columna de pruebas co
 | Navegación por rol | `modulos/autenticacion/aplicacion/destino.dart`, `app/router.dart` | PU-23 (`test/modulos/autenticacion/destino_test.dart`), PW-04 |
 
 Nuevos IDs de prueba: PU-20 a PU-23, PW-04, PR-18 a PR-22, PM-03. PI-01 se sustituye por PM-03 (12_INCREMENTOS, D-2).
+
+### I2–I6 (2026-11-19)
+
+| Requisito | Implementación real | Pruebas reales |
+|---|---|---|
+| RF-006, RF-008 a RF-011 | `dominio/horario.dart`, `modulos/horario/`, `datos/firestore_horario_repositorio.dart` | PU-01 a PU-06 (`test/dominio/horario_test.dart`), PW-05 (`test/modulos/horario/lector_archivo_test.dart`), PR-05 (`test_reglas/registro.test.js`) |
+| RF-013 a RF-019, RF-022 | `modulos/recorrido/`, `datos/firestore_registro_repositorio.dart` | PU-07 a PU-13 (`test/dominio/situacion_test.dart`), PW-02 (`test/modulos/recorrido/recorrido_pantalla_test.dart`), PR-06 a PR-12 |
+| RF-021, RNF-001/002/008 | `app/firebase_config.dart` (persistencia), indicador de conexión, `medirDesfaseReloj` | PU-14, PM-04 |
+| RF-030 a RF-032 | `modulos/bitacora/` (Hoy, Registros, detalle) | PR-09, PR-13, PR-14, PM-04 |
+| RF-028, RF-029, RF-033 | `modulos/reportes/`, `datos/firestore_respaldo.dart` | PU-15 a PU-17, PW-06 (`test/modulos/reportes/generador_reportes_test.dart`), PM-04 |

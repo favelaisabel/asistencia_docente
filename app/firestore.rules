@@ -115,6 +115,213 @@ service cloud.firestore {
       allow delete: if esCoordinacion() && resource.data.usado == false;
     }
 
+    function esEncargado() {
+      return tieneRol('ENC');
+    }
+
+    function rolActual() {
+      return get(rutaUsuario(request.auth.uid)).data.rol;
+    }
+
+    // ---------- Horario y catálogos (I2, 06_MODELO_DATOS §4.1–4.8) ----------
+
+    match /config/{doc} {
+      allow read: if perfilActivo();
+      allow create, update: if esCoordinacion()
+        && doc == 'sistema'
+        && request.resource.data.keys().hasOnly(['periodoActivoId', 'importacionActivaId', 'actualizadoEn', 'actualizadoPor'])
+        && request.resource.data.periodoActivoId is string
+        && request.resource.data.importacionActivaId is string
+        && request.resource.data.actualizadoPor == request.auth.uid
+        && request.resource.data.actualizadoEn == request.time;
+      allow delete: if false;
+    }
+
+    match /periodos/{id} {
+      allow read: if perfilActivo();
+      allow create, update: if esCoordinacion()
+        && request.resource.data.keys().hasOnly(['nombre', 'fechaInicio', 'fechaFin', 'esquemaVersion'])
+        && textoValido(request.resource.data.nombre, 1, 40)
+        && request.resource.data.fechaInicio is string
+        && request.resource.data.fechaFin is string
+        && request.resource.data.fechaFin > request.resource.data.fechaInicio;
+      allow delete: if false;
+    }
+
+    match /aulas/{id} {
+      allow read: if perfilActivo();
+      allow create, update: if esCoordinacion()
+        && request.resource.data.keys().hasOnly(['numero', 'edificio', 'activa'])
+        && request.resource.data.numero == id
+        && request.resource.data.activa is bool;
+      allow delete: if false;
+    }
+
+    match /docentes/{id} {
+      allow read: if perfilActivo();
+      allow create, update: if esCoordinacion()
+        && request.resource.data.keys().hasOnly(['numEmpleado', 'nombreCompleto', 'activo'])
+        && request.resource.data.numEmpleado == id
+        && textoValido(request.resource.data.nombreCompleto, 3, 120)
+        && request.resource.data.activo is bool;
+      allow delete: if false;
+    }
+
+    match /importaciones/{id} {
+      allow read: if perfilActivo();
+      allow create: if esCoordinacion()
+        && request.resource.data.keys().hasOnly(['periodoId', 'archivoNombre', 'totalClases', 'estado', 'creadoPor', 'creadoEn'])
+        && request.resource.data.estado == 'CARGANDO'
+        && request.resource.data.totalClases is int
+        && request.resource.data.creadoPor == request.auth.uid
+        && request.resource.data.creadoEn == request.time;
+      // Importación versionada (06 §7.2): CARGANDO → COMPLETA o DESCARTADA.
+      allow update: if esCoordinacion()
+        && resource.data.estado == 'CARGANDO'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['estado'])
+        && request.resource.data.estado in ['COMPLETA', 'DESCARTADA'];
+      allow delete: if false;
+    }
+
+    function claseValida(d) {
+      let campos = ['importacionId', 'periodoId', 'aulaId', 'docenteId', 'docenteNombre', 'materia', 'grupo', 'diaSemana', 'horaInicio', 'horaFin'];
+      return d.keys().hasOnly(campos)
+        && d.keys().hasAll(campos)
+        && d.diaSemana is int && d.diaSemana >= 1 && d.diaSemana <= 6
+        && d.horaInicio is int && d.horaInicio >= 7 && d.horaInicio <= 20
+        && d.horaFin is int && d.horaFin > d.horaInicio && d.horaFin <= 21
+        && textoValido(d.aulaId, 1, 10)
+        && textoValido(d.docenteId, 1, 20)
+        && textoValido(d.docenteNombre, 3, 120);
+    }
+
+    match /clases/{id} {
+      allow read: if perfilActivo();
+      // Solo se agregan clases a una importación que se está cargando; nunca se editan.
+      allow create: if esCoordinacion()
+        && claseValida(request.resource.data)
+        && get(/databases/$(database)/documents/importaciones/$(request.resource.data.importacionId)).data.estado == 'CARGANDO';
+      allow update, delete: if false;
+    }
+
+    // ---------- Registros y bitácora (I3–I5, 08_SEGURIDAD_CONTINUIDAD §5.1) ----------
+
+    function rutaBitacora(id) {
+      return /databases/$(database)/documents/bitacora/$(id);
+    }
+
+    function rutaRegistro(id) {
+      return /databases/$(database)/documents/registros/$(id);
+    }
+
+    function camposRegistro() {
+      return ['periodoId', 'claseId', 'aulaId', 'fecha', 'fechaTs', 'hora', 'turno',
+        'docenteId', 'docenteNombre', 'materia', 'grupo', 'estadoCaptura',
+        'suplenteNombre', 'observacion', 'horaDispositivo', 'horaServidor',
+        'llegadaDispositivo', 'desfaseRelojMs', 'capturadoSinConexion', 'origen',
+        'registradoPor', 'version', 'actualizadoPor', 'actualizadoEn',
+        'justificacionEstado', 'esquemaVersion'];
+    }
+
+    // RN-001, RN-007, RF-017.
+    function registroValido(d) {
+      return d.keys().hasOnly(camposRegistro())
+        && d.keys().hasAll(camposRegistro())
+        && d.fecha is string && d.fecha.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && d.fechaTs is timestamp
+        && d.hora is int && d.hora >= 7 && d.hora <= 20
+        && d.turno == (d.hora < 14 ? 'MAT' : 'VES')
+        && d.estadoCaptura in ['PRESENTE', 'AUN_NO_LLEGA', 'RETARDO', 'SUPLENTE', 'SIN_ALUMNOS', 'SIN_DOCENTE', 'NO_PROGRAMADA']
+        && d.suplenteNombre is string && d.suplenteNombre.size() <= 120
+        && (d.estadoCaptura != 'SUPLENTE' || d.suplenteNombre.size() >= 3)
+        && d.observacion is string && d.observacion.size() <= 250
+        && d.horaDispositivo is timestamp
+        && (d.llegadaDispositivo == null || d.llegadaDispositivo is timestamp)
+        && d.desfaseRelojMs is int
+        && d.capturadoSinConexion is bool
+        && d.origen in ['APP', 'MANUAL']
+        && d.version is int
+        && d.justificacionEstado == 'NINGUNA'
+        && d.actualizadoPor == request.auth.uid
+        && d.actualizadoEn == request.time
+        && d.esquemaVersion == 1;
+    }
+
+    // RN-006: el ID es {aula}_{AAAAMMDD}_{HH}.
+    function idCoherente(id, d) {
+      return id == d.aulaId + '_' + d.fecha.replace('-', '') + '_'
+        + (d.hora < 10 ? '0' + string(d.hora) : string(d.hora));
+    }
+
+    function inmutablesIguales() {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(
+        ['estadoCaptura', 'suplenteNombre', 'observacion', 'llegadaDispositivo',
+         'version', 'actualizadoPor', 'actualizadoEn']);
+    }
+
+    match /registros/{id} {
+      // C-08: toda escritura llega con su entrada de bitácora en el mismo lote.
+      allow create: if idCoherente(id, request.resource.data)
+        && registroValido(request.resource.data)
+        && request.resource.data.version == 1
+        && request.resource.data.registradoPor == request.auth.uid
+        && request.resource.data.horaServidor == request.time
+        && existsAfter(rutaBitacora(id + '_v1'))
+        && (
+          // Encargado desde la app: C-11, no más de 2 días atrás ni futura.
+          (esEncargado()
+            && request.resource.data.origen == 'APP'
+            && request.resource.data.fechaTs > request.time - duration.value(2, 'd')
+            && request.resource.data.fechaTs < request.time + duration.value(1, 'd'))
+          // Coordinación: captura de contingencia (E-11).
+          || (esCoordinacion() && request.resource.data.origen == 'MANUAL')
+        );
+
+      allow update: if registroValido(request.resource.data)
+        && inmutablesIguales()
+        && request.resource.data.version == resource.data.version + 1
+        && existsAfter(rutaBitacora(id + '_v' + string(request.resource.data.version)))
+        && (
+          // RN-009 refinado (08 §5.2): el encargado, hasta el fin del día del registro.
+          (esEncargado() && request.time < resource.data.fechaTs + duration.value(1, 'd'))
+          // RF-031: Coordinación, con motivo obligatorio.
+          || (esCoordinacion()
+            && getAfter(rutaBitacora(id + '_v' + string(request.resource.data.version))).data.motivo.size() >= 3)
+        );
+
+      // RN-008: nunca se borran.
+      allow delete: if false;
+
+      allow read: if esCoordinacion()
+        || (esEncargado() && resource.data.fechaTs > request.time - duration.value(2, 'd'));
+    }
+
+    match /bitacora/{id} {
+      allow read: if esCoordinacion();
+      allow create: if (esEncargado() || esCoordinacion())
+        && request.resource.data.keys().hasOnly(['registroId', 'version', 'accion', 'antes', 'despues', 'motivo', 'usuarioUid', 'usuarioNombre', 'usuarioRol', 'horaServidor'])
+        && request.resource.data.keys().hasAll(['registroId', 'version', 'accion', 'antes', 'despues', 'motivo', 'usuarioUid', 'usuarioNombre', 'usuarioRol', 'horaServidor'])
+        && id == request.resource.data.registroId + '_v' + string(request.resource.data.version)
+        && getAfter(rutaRegistro(request.resource.data.registroId)).data.version == request.resource.data.version
+        && request.resource.data.accion in ['CREAR', 'LLEGADA', 'CORREGIR']
+        && request.resource.data.antes is map
+        && request.resource.data.despues is map
+        && request.resource.data.motivo is string && request.resource.data.motivo.size() <= 500
+        && request.resource.data.usuarioUid == request.auth.uid
+        && request.resource.data.usuarioRol == rolActual()
+        && request.resource.data.horaServidor == request.time;
+      // RNF-009: inmutable.
+      allow update, delete: if false;
+    }
+
+    // Medición del desfase del reloj (RNF-008): cada usuario solo su documento.
+    match /sincronizacion/{uid} {
+      allow read: if autenticado() && request.auth.uid == uid;
+      allow write: if autenticado() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['ping'])
+        && request.resource.data.ping == request.time;
+    }
+
     // ---------- Todo lo demás ----------
 
     match /{document=**} {

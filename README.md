@@ -31,6 +31,10 @@ asistencia_docente/
     └── firebase.json         Configuración de Firebase y del emulador
 ```
 
+## Demostración
+
+Guion completo para presentar el MVP en el emulador: **[docs/GUIA_DEMO.md](docs/GUIA_DEMO.md)**.
+
 ## Requisitos
 
 | Herramienta | Versión | Para qué |
@@ -72,7 +76,7 @@ npm ci            # instala Firebase CLI y herramientas de prueba en el proyecto
    npm run sembrar
    ```
 
-   Crea el usuario de Coordinación `coordinacion@demo.edu.mx` / `Coordinacion2026` y un pre-registro de encargado (`encargado@demo.edu.mx`) para probar el **Primer acceso**. El enlace para confirmar el correo aparece en la terminal del emulador.
+   Crea Coordinación (`coordinacion@demo.edu.mx` / `Coordinacion2026`), el encargado (`encargado@demo.edu.mx` / `Encargado2026`), un pre-registro pendiente (`nuevo.encargado@demo.edu.mx`) y activa el horario de demostración (480 clases). El enlace para confirmar el correo aparece en la terminal del emulador.
 
 2. **Ejecutar la app** (otra terminal):
 
@@ -126,4 +130,7 @@ El CI de GitHub ejecuta lo mismo en cada push y pull request.
 | **Ciclo II** | Diseño y planificación | **Completado** (excepción: validar prototipo antes de I3) |
 | 10. Entorno de desarrollo | app/ + README + CI | Cerrada (CI en verde en GitHub) |
 | 11. Estándares de codificación | docs/10_ESTANDARES.md + AGENTS.md | Cerrada |
-| 12. Incremento I1 · Acceso y roles | docs/12_INCREMENTOS.md | Terminado, pendiente PR y PM-03 |
+| 12. Incremento I1 · Acceso y roles | docs/12_INCREMENTOS.md | Terminado |
+| 12. Incrementos I2–I6 · MVP completo | docs/12_INCREMENTOS.md | Terminado (excepciones E-1 a E-3) |
+| **Ciclo III** | Construcción | **MVP terminado** |
+| 13–20. Validación y operación | docs/13_VALIDACION_OPERACION.md | Iniciado: pruebas y seguridad parciales; aceptación y despliegue pendientes |

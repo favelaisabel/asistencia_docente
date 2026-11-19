@@ -6,8 +6,9 @@
   "scripts": {
     "test": "firebase emulators:exec --only firestore --project demo-asistencia-docente \"vitest run\"",
     "emuladores": "firebase emulators:start --project demo-asistencia-docente",
-    "sembrar": "node sembrar.mjs",
-    "prueba-sembrado": "firebase emulators:exec --only auth,firestore --project demo-asistencia-docente \"node sembrar.mjs\""
+    "sembrar": "node sembrar.mjs --con-horario",
+    "prueba-sembrado": "firebase emulators:exec --only auth,firestore --project demo-asistencia-docente \"node sembrar.mjs --con-horario\"",
+    "sembrar-sin-horario": "node sembrar.mjs"
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "^6.0.0",

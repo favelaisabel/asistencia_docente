@@ -1,4 +1,29 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "clases",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "importacionId", "order": "ASCENDING" },
+        { "fieldPath": "diaSemana", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "bitacora",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "registroId", "order": "ASCENDING" },
+        { "fieldPath": "version", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "usuarios",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "correo", "order": "ASCENDING" },
+        { "fieldPath": "nombre", "order": "ASCENDING" }
+      ]
+    }
+  ],
   "fieldOverrides": []
 }

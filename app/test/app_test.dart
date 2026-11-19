@@ -4,14 +4,23 @@ import 'package:asistencia_docente/dominio/rol.dart';
 import 'package:asistencia_docente/dominio/sesion.dart';
 import 'package:asistencia_docente/dominio/usuario.dart';
 import 'package:asistencia_docente/modulos/autenticacion/aplicacion/providers.dart';
+import 'package:asistencia_docente/modulos/horario/aplicacion/providers.dart';
+import 'package:asistencia_docente/modulos/recorrido/aplicacion/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'fakes/autenticacion_falsa.dart';
+import 'fakes/datos_falsos.dart';
 
 Widget conSesion(Widget app, AutenticacionFalsa repositorio) => ProviderScope(
-  overrides: [autenticacionRepositorioProvider.overrideWithValue(repositorio)],
+  overrides: [
+    autenticacionRepositorioProvider.overrideWithValue(repositorio),
+    horarioRepositorioProvider.overrideWithValue(
+      HorarioFalso(clasesDeEjemplo()),
+    ),
+    registroRepositorioProvider.overrideWithValue(RegistrosFalsos()),
+  ],
   child: app,
 );
 
@@ -43,7 +52,7 @@ void main() {
     await tester.pumpWidget(conSesion(const AppMovil(), repo));
     await tester.pumpAndSettle();
     expect(find.text('Recorrido'), findsOneWidget);
-    expect(find.textContaining('Hola, Carlos Medina'), findsOneWidget);
+    expect(find.textContaining('Carlos Medina'), findsOneWidget);
   });
 
   testWidgets('Coordinación no puede usar la app del encargado', (
