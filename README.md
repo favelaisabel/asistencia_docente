@@ -115,4 +115,5 @@ El CI de GitHub ejecuta lo mismo en cada push y pull request.
 | 8. Seguridad y continuidad | docs/08_SEGURIDAD_CONTINUIDAD.md | Cerrada (CR-001 aprobada) |
 | 9. Plan incremental | docs/09_ROADMAP.md | Cerrada |
 | **Ciclo II** | Diseño y planificación | **Completado** (excepción: validar prototipo antes de I3) |
-| 10. Entorno de desarrollo | app/ + README + CI | Local listo; pendiente publicar en GitHub |
+| 10. Entorno de desarrollo | app/ + README + CI | Cerrada (CI en verde en GitHub) |
+| 11. Estándares de codificación | docs/10_ESTANDARES.md + AGENTS.md | Cerrada |
